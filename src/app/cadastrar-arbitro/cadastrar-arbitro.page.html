@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar Arbitro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Nome:</ion-label>
+      <ion-input type="text" nome="nome" [(ngModel)]="model.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-label stacked>Função:</ion-label>
+      <ion-radio-group [(ngModel)]="model.funcao">
+
+        <ion-item>
+          <ion-item>
+            <ion-label>Auxiliar </ion-label>
+            <ion-radio value="11"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Principal </ion-label>
+            <ion-radio value="10"></ion-radio>
+          </ion-item>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+    <ion-button (click)="criar()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
+  </ion-list>
+
+</ion-content>

@@ -16,7 +16,8 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'categorias',
-   loadChildren: './categorias/categorias.module#CategoriasPageModule' }
+   loadChildren: './categorias/categorias.module#CategoriasPageModule' },
+  { path: 'cadastrar-arbitro', loadChildren: './cadastrar-arbitro/cadastrar-arbitro.module#CadastrarArbitroPageModule' }
 ];
 
 @NgModule({
