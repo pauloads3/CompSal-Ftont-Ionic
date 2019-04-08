@@ -17,7 +17,9 @@ const routes: Routes = [
   },
   { path: 'categorias',
    loadChildren: './categorias/categorias.module#CategoriasPageModule' },
-  { path: 'cadastrar-arbitro', loadChildren: './cadastrar-arbitro/cadastrar-arbitro.module#CadastrarArbitroPageModule' }
+  { path: 'cadastrar-arbitro', loadChildren: './cadastrar-arbitro/cadastrar-arbitro.module#CadastrarArbitroPageModule' },
+  { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosPageModule' },
+  { path: 'cadastrar-usuario', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' }
 ];
 
 @NgModule({

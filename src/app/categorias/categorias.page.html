@@ -1,16 +1,16 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Categorias</ion-title>
   </ion-toolbar>
-  
+
 </ion-header>
-<ion-searchbar showCancelButton cancelButtonText="Custom Cancel" ></ion-searchbar>
+<ion-searchbar showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
 <ion-content padding>
   <ion-list>
-      <ion-item>
+    <ion-item>
       <ion-label>Id </ion-label>
       <ion-label>Descrição</ion-label>
     </ion-item>
@@ -18,17 +18,17 @@
       <ion-label>{{sumulas.id}} </ion-label>
       <ion-label>{{sumulas.nome}} </ion-label>
       <ion-button slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
-       <ion-button slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
+      <ion-button slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
     </ion-item>
   </ion-list>
 
-      
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-            <ion-fab-button routerLink="/cadastrar-arbitro">
-              <ion-icon name="add-circle"></ion-icon>
-            </ion-fab-button>
-          </ion-fab>
 
-          
-          
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/cadastrar-arbitro">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
 </ion-content>

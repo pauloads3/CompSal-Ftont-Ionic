@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nome:</ion-label>
+    <ion-input clearInput [(ngModel)]="model.nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">CPF:</ion-label>
+    <ion-input type="number" clearInput [(ngModel)]="model.cpf"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apelidio:</ion-label>
+    <ion-input clearInput [(ngModel)]="model.apelidio"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Data de Nascimento:</ion-label>
+    <ion-input clearInput [(ngModel)]="model.dtNascimento"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Sexo:</ion-label>
+    <ion-select clearInput [interfaceOptions]="customPopoverOptions" interface="popover">
+      <ion-select-option value="M">Masculino</ion-select-option>
+      <ion-select-option value="F">Feminino</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefone:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">E-mail:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Endereço:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nº:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">CEP:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Bairro:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Município:</ion-label>
+    <ion-input clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">UF:</ion-label>
+    <ion-select clearInput [interfaceOptions]="customPopoverOptions" interface="popover">
+      <ion-select-option value="AC">AC</ion-select-option>
+      <ion-select-option value="AL">AL</ion-select-option>
+      <ion-select-option value="AP">AP</ion-select-option>
+      <ion-select-option value="AM">AM</ion-select-option>
+      <ion-select-option value="BA">BA</ion-select-option>
+      <ion-select-option value="CE">CE</ion-select-option>
+      <ion-select-option value="DF">DF</ion-select-option>
+      <ion-select-option value="ES">ES</ion-select-option>
+      <ion-select-option value="GO">GO</ion-select-option>
+      <ion-select-option value="MA">MA</ion-select-option>
+      <ion-select-option value="MT">MT</ion-select-option>
+      <ion-select-option value="MS">MS</ion-select-option>
+      <ion-select-option value="MG">MG</ion-select-option>
+      <ion-select-option value="PA">PA</ion-select-option>
+      <ion-select-option value="PB">PB</ion-select-option>
+      <ion-select-option value="PR">PR</ion-select-option>
+      <ion-select-option value="PE">PE</ion-select-option>
+      <ion-select-option value="PI">PI</ion-select-option>
+      <ion-select-option value="RJ">RJ</ion-select-option>
+      <ion-select-option value="RN">RN</ion-select-option>
+      <ion-select-option value="RS">RS</ion-select-option>
+      <ion-select-option value="RO">RO</ion-select-option>
+      <ion-select-option value="RR">RR</ion-select-option>
+      <ion-select-option value="SC">SC</ion-select-option>
+      <ion-select-option value="SP">SP</ion-select-option>
+      <ion-select-option value="SE">SE</ion-select-option>
+      <ion-select-option value="TO">TO</ion-select-option>
+      <ion-select-option value="EX">Exterior</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
+</ion-content>

@@ -32,7 +32,7 @@ export class AppComponent {
     },
     {
       title: 'Usuarios',
-      url: '/Usuarios',
+      url: '/usuarios',
       icon: 'people'
     },
     {

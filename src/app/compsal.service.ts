@@ -18,7 +18,7 @@ export class CompsalService {
     this.http.get("http://localhost:8080/sumulas").subscribe(data => { console.log(data) });
   }
   get() {
-    return this.http.get(this.URL + "arbitros");
+    return this.http.get(this.URL + "usuarios");
 
   }
 
@@ -46,6 +46,38 @@ export class CompsalService {
               };
       console.log(data);
       this.http.post("http://localhost:8080/arbitros/createArbitro", data)
+      .subscribe((result: any) => {
+        resolve (result.json());
+        console.log(data);
+      },
+      (error)=>{
+        reject(error.json())
+      })
+    });
+  }
+    
+  cadastarUsuario(id: number, nome: string, cpf: string, apelidio: string, 
+    dtNascimento: string, sexo: string, telefone: string, email: string, endereco: string, numeroEnd: string,
+    cep: string, bairro:string, municipio: string, uf: string ){
+    return new Promise((resolve, reject) =>{
+      var data ={
+        id: id,
+        nome: nome,
+        cpf: cpf,
+        apelidio: apelidio,
+        dtNascimento: dtNascimento,
+        sexo: sexo,
+        telefone: telefone,
+        email: email,
+        endereco: endereco,
+        numeroEnd: numeroEnd,
+        cep: cep,
+        bairro: bairro,
+        municipio: municipio,
+        uf:uf
+              };
+      console.log(data);
+      this.http.post("http://localhost:8080/usuarios/createUsuario", data)
       .subscribe((result: any) => {
         resolve (result.json());
         console.log(data);
