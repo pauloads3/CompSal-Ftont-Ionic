@@ -10,6 +10,7 @@ import { CompsalService } from '../compsal.service';
 export class CategoriasPage implements OnInit {
 
   public lista_categorias = new Array<any>();
+  public lista_filtradas = new Array<any>();
 
   constructor(private compsalService: CompsalService) { }
 
@@ -28,7 +29,10 @@ export class CategoriasPage implements OnInit {
 
     );
   }
+  filtrarItens(){
 
+    
+  }
 
 
 }

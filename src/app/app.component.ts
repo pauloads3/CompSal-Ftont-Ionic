@@ -31,7 +31,7 @@ export class AppComponent {
       icon: 'clipboard'
     },
     {
-      title: 'Usuarios',
+      title: 'Categorias',
       url: '/usuarios',
       icon: 'people'
     },
@@ -41,7 +41,7 @@ export class AppComponent {
       icon: 'happy'
     },
     {
-      title: 'Categorias',
+      title: 'Usuarios',
       url: '/categorias',
       icon: 'body'
     },

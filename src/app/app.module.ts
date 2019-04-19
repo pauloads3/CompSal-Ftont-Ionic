@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrMaskerModule } from 'br-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,8 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(),
     HttpClientModule,
-   
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrMaskerModule
   ],
   providers: [
     StatusBar,

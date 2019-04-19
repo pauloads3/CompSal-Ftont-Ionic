@@ -3,16 +3,18 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Categorias</ion-title>
+    <ion-title>Usuários</ion-title>
   </ion-toolbar>
 
 </ion-header>
-<ion-searchbar showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
+
 <ion-content padding>
+    <ion-searchbar animated [(ngModel)]="sumulas.nome" (ioniInput)="filtrarItens()" showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
   <ion-list>
     <ion-item>
       <ion-label>Id </ion-label>
-      <ion-label>Descrição</ion-label>
+      <ion-label>Nome</ion-label>
+      <ion-label></ion-label>
     </ion-item>
     <ion-item *ngFor="let sumulas of lista_categorias">
       <ion-label>{{sumulas.id}} </ion-label>

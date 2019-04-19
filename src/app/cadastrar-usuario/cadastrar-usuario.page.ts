@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompsalService } from '../compsal.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -9,17 +11,28 @@ import { CompsalService } from '../compsal.service';
 export class CadastrarUsuarioPage implements OnInit {
 
   model: Usuario;
+  private formulario : FormGroup;
 
-  constructor(private compsalService: CompsalService) { this.model = new Usuario(); }
+  constructor(private formBuilder: FormBuilder, private compsalService: CompsalService) { 
+    this.model = new Usuario(); 
+    this.formulario = this.formBuilder.group({
+      cpf: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
   }
+
+  logForm(){
+    console.log(this.formulario.value)
+  } 
+
   criarUsuario() {
     this.compsalService.cadastarUsuario(
       null,
       this.model.nome,
       this.model.cpf,
-      this.model.apelidio,
+      this.model.apelido,
       this.model.dtNascimento,
       this.model.sexo,
       this.model.telefone,
@@ -32,12 +45,11 @@ export class CadastrarUsuarioPage implements OnInit {
       this.model.uf
     )
   }
-
-}
+ }
 export class Usuario {
   nome: string;
   cpf: string;
-  apelidio: string;
+  apelido: string;
   dtNascimento: string;
   sexo: string;
   telefone: string;

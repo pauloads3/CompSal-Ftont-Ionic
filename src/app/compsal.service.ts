@@ -37,34 +37,34 @@ export class CompsalService {
           })
     });
   }
-  cadastarArbitro(id: number, nome: string, funcao: string ){
-    return new Promise((resolve, reject) =>{
-      var data ={
+  cadastarArbitro(id: number, nome: string, funcao: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
         id: id,
         nome: nome,
         funcao: funcao
-              };
+      };
       console.log(data);
       this.http.post("http://localhost:8080/arbitros/createArbitro", data)
-      .subscribe((result: any) => {
-        resolve (result.json());
-        console.log(data);
-      },
-      (error)=>{
-        reject(error.json())
-      })
+        .subscribe((result: any) => {
+          resolve(result.json());
+          console.log(data);
+        },
+          (error) => {
+            reject(error.json())
+          })
     });
   }
-    
-  cadastarUsuario(id: number, nome: string, cpf: string, apelidio: string, 
+
+  cadastarUsuario(id: number, nome: string, cpf: string, apelido: string,
     dtNascimento: string, sexo: string, telefone: string, email: string, endereco: string, numeroEnd: string,
-    cep: string, bairro:string, municipio: string, uf: string ){
-    return new Promise((resolve, reject) =>{
-      var data ={
+    cep: string, bairro: string, municipio: string, uf: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
         id: id,
         nome: nome,
         cpf: cpf,
-        apelidio: apelidio,
+        apelido: apelido,
         dtNascimento: dtNascimento,
         sexo: sexo,
         telefone: telefone,
@@ -74,18 +74,59 @@ export class CompsalService {
         cep: cep,
         bairro: bairro,
         municipio: municipio,
-        uf:uf
-              };
+        uf: uf
+      };
+      console.log("antes");
       console.log(data);
+      console.log("depois");
       this.http.post("http://localhost:8080/usuarios/createUsuario", data)
-      .subscribe((result: any) => {
-        resolve (result.json());
-        console.log(data);
-      },
-      (error)=>{
-        reject(error.json())
-      })
+        .subscribe((result: any) => {
+
+          resolve(result.data);
+         // console.log(result.json());
+        },
+          (error) => {
+            reject(error)
+          })
     });
   }
+  cadastarUsuarioaa(id: number, nome: string, cpf: string, apelido: string,
+    dtNascimento: string, sexo: string, telefone: string, email: string, endereco: string, numeroEnd: string,
+    cep: string, bairro: string, municipio: string, uf: string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        id: id,
+        nome: nome,
+        cpf: cpf,
+        apelido: apelido,
+        dtNascimento: dtNascimento,
+        sexo: sexo,
+        telefone: telefone,
+        email: email,
+        endereco: endereco,
+        numeroEnd: numeroEnd,
+        cep: cep,
+        bairro: bairro,
+        municipio: municipio,
+        uf: uf
+      };
+      console.log("antes");
+      console.log(data);
+      console.log("depois");
+      this.http.post("http://localhost:8080/usuarios/createUsuario", data)
+        .subscribe((result: any) => {
 
+          resolve(result.json());
+          console.log(result);
+          console.log("!!!!!!!!!!");
+        },
+          (error) => {
+            console.log(error.status);
+            console.log(error.error); // error message as string
+            console.log(error.headers);
+            
+            reject(error)
+          })
+    });
+  }
 }

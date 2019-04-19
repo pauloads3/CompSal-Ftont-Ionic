@@ -2,67 +2,73 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Cadastrar Usuário</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+  
   <ion-item>
     <ion-label position="floating">Nome:</ion-label>
-    <ion-input clearInput [(ngModel)]="model.nome"></ion-input>
+    <ion-input required clearInput [(ngModel)]="model.nome"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">CPF:</ion-label>
     <ion-input type="number" clearInput [(ngModel)]="model.cpf"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Apelidio:</ion-label>
-    <ion-input clearInput [(ngModel)]="model.apelidio"></ion-input>
+    <ion-label position="floating">Apelido:</ion-label>
+    <ion-input clearInput [(ngModel)]="model.apelido" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Data de Nascimento:</ion-label>
-    <ion-input clearInput [(ngModel)]="model.dtNascimento"></ion-input>
+    <!-- <ion-input clearInput [(ngModel)]="model.dtNascimento"></ion-input> -->
+    <ion-datetime display-format="DD/MMM/YYYY" [(ngModel)]="model.dtNascimento"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Sexo:</ion-label>
-    <ion-select clearInput [interfaceOptions]="customPopoverOptions" interface="popover">
+    <ion-select clearInput [(ngModel)]="model.sexo" [interfaceOptions]="customPopoverOptions" interface="popover">
       <ion-select-option value="M">Masculino</ion-select-option>
       <ion-select-option value="F">Feminino</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Telefone:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.telefone"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">E-mail:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Endereço:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.endereco"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Nº:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.numeroEnd"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">CEP:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.cep"></ion-input>
   </ion-item>
+  
   <ion-item>
     <ion-label position="floating">Bairro:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.bairro"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Município:</ion-label>
-    <ion-input clearInput></ion-input>
+    <ion-input clearInput [(ngModel)]="model.municipio"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">UF:</ion-label>
-    <ion-select clearInput [interfaceOptions]="customPopoverOptions" interface="popover">
+    <ion-select clearInput [(ngModel)]="model.uf" [interfaceOptions]="customPopoverOptions" interface="popover">
       <ion-select-option value="AC">AC</ion-select-option>
       <ion-select-option value="AL">AL</ion-select-option>
       <ion-select-option value="AP">AP</ion-select-option>
@@ -93,5 +99,9 @@
       <ion-select-option value="EX">Exterior</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
+  
 </ion-content>
+<ion-toolbar>
+    <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
+
+  </ion-toolbar>
