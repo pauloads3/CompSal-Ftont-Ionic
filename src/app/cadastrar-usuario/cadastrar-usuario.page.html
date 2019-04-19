@@ -11,7 +11,10 @@
 
 
 <ion-content>
-  
+  <ion-item>
+    <ion-label position="floating">ID:</ion-label>
+    <ion-input required type="number" clearInput [(ngModel)]="model.id"></ion-input>
+  </ion-item>
   <ion-item>
     <ion-label position="floating">Nome:</ion-label>
     <ion-input required clearInput [(ngModel)]="model.nome"></ion-input>
@@ -22,7 +25,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Apelido:</ion-label>
-    <ion-input clearInput [(ngModel)]="model.apelido" ></ion-input>
+    <ion-input clearInput [(ngModel)]="model.apelido"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -57,7 +60,7 @@
     <ion-label position="floating">CEP:</ion-label>
     <ion-input clearInput [(ngModel)]="model.cep"></ion-input>
   </ion-item>
-  
+
   <ion-item>
     <ion-label position="floating">Bairro:</ion-label>
     <ion-input clearInput [(ngModel)]="model.bairro"></ion-input>
@@ -99,9 +102,13 @@
       <ion-select-option value="EX">Exterior</ion-select-option>
     </ion-select>
   </ion-item>
-  
+
 </ion-content>
 <ion-toolbar>
-    <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
+  <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
 
-  </ion-toolbar>
+</ion-toolbar>
+<ion-toolbar>
+  <ion-button (click)="confirmacaoUsuario()" expand="full" fill="outline" shape="round">Excluir</ion-button>
+
+</ion-toolbar>

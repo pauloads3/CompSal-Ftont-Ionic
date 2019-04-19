@@ -18,7 +18,7 @@ export class CompsalService {
     this.http.get("http://localhost:8080/sumulas").subscribe(data => { console.log(data) });
   }
   get() {
-    return this.http.get(this.URL + "usuarios");
+    return this.http.get(this.URL + 'usuarios');
 
   }
 
@@ -79,41 +79,26 @@ export class CompsalService {
       console.log("antes");
       console.log(data);
       console.log("depois");
-      this.http.post("http://localhost:8080/usuarios/createUsuario", data)
+      this.http.post(this.URL + 'usuarios/createUsuario', data)
         .subscribe((result: any) => {
 
           resolve(result.data);
-         // console.log(result.json());
+          // console.log(result.json());
         },
           (error) => {
             reject(error)
           })
     });
   }
-  cadastarUsuarioaa(id: number, nome: string, cpf: string, apelido: string,
-    dtNascimento: string, sexo: string, telefone: string, email: string, endereco: string, numeroEnd: string,
-    cep: string, bairro: string, municipio: string, uf: string) {
+  excluirUsuarioa(id: number) {
     return new Promise((resolve, reject) => {
       var data = {
         id: id,
-        nome: nome,
-        cpf: cpf,
-        apelido: apelido,
-        dtNascimento: dtNascimento,
-        sexo: sexo,
-        telefone: telefone,
-        email: email,
-        endereco: endereco,
-        numeroEnd: numeroEnd,
-        cep: cep,
-        bairro: bairro,
-        municipio: municipio,
-        uf: uf
       };
       console.log("antes");
       console.log(data);
       console.log("depois");
-      this.http.post("http://localhost:8080/usuarios/createUsuario", data)
+      this.http.post(this.URL + 'usuarios/deleteUsuario', data)
         .subscribe((result: any) => {
 
           resolve(result.json());
@@ -124,7 +109,7 @@ export class CompsalService {
             console.log(error.status);
             console.log(error.error); // error message as string
             console.log(error.headers);
-            
+
             reject(error)
           })
     });

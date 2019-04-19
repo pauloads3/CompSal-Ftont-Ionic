@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompsalService } from '../compsal.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -11,10 +12,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class CadastrarUsuarioPage implements OnInit {
 
   model: Usuario;
-  private formulario : FormGroup;
+  private formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private compsalService: CompsalService) { 
-    this.model = new Usuario(); 
+  constructor(private formBuilder: FormBuilder, private compsalService: CompsalService, public alertController: AlertController) {
+    this.model = new Usuario();
     this.formulario = this.formBuilder.group({
       cpf: ['', Validators.required],
     });
@@ -23,9 +24,9 @@ export class CadastrarUsuarioPage implements OnInit {
   ngOnInit() {
   }
 
-  logForm(){
+  logForm() {
     console.log(this.formulario.value)
-  } 
+  }
 
   criarUsuario() {
     this.compsalService.cadastarUsuario(
@@ -45,8 +46,38 @@ export class CadastrarUsuarioPage implements OnInit {
       this.model.uf
     )
   }
- }
+  excluirUsuario(id) {
+
+    this.compsalService.excluirUsuarioa(this.model.id)
+
+  }
+  async confirmacaoUsuario() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+}
 export class Usuario {
+  id: number;
   nome: string;
   cpf: string;
   apelido: string;
