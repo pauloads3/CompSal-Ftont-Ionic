@@ -28,6 +28,16 @@ export class CadastrarUsuarioPage implements OnInit {
     console.log(this.formulario.value)
   }
 
+  async Alerta(messagem: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: messagem,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
   criarUsuario() {
     this.compsalService.cadastarUsuario(
       null,

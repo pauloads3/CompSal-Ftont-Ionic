@@ -11,10 +11,10 @@
 
 
 <ion-content>
-  <ion-item>
+  <!--<ion-item>
     <ion-label position="floating">ID:</ion-label>
     <ion-input required type="number" clearInput [(ngModel)]="model.id"></ion-input>
-  </ion-item>
+  </ion-item> -->
   <ion-item>
     <ion-label position="floating">Nome:</ion-label>
     <ion-input required clearInput [(ngModel)]="model.nome"></ion-input>
@@ -106,9 +106,5 @@
 </ion-content>
 <ion-toolbar>
   <ion-button (click)="criarUsuario()" expand="full" fill="outline" shape="round">Cadastrar</ion-button>
-
-</ion-toolbar>
-<ion-toolbar>
-  <ion-button (click)="confirmacaoUsuario()" expand="full" fill="outline" shape="round">Excluir</ion-button>
 
 </ion-toolbar>

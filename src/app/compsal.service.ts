@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class CompsalService {
   private URL = 'http://localhost:8080/';
 
   public items: any;
-  constructor(public http: HttpClient) { this.getArbritos(); }
+  constructor(public http: HttpClient, private alertController: AlertController) { this.getArbritos(); }
 
   getArbritos() {
     let data: any;
@@ -55,7 +56,15 @@ export class CompsalService {
           })
     });
   }
+  async Alerta(messagem: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: messagem,
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
   cadastarUsuario(id: number, nome: string, cpf: string, apelido: string,
     dtNascimento: string, sexo: string, telefone: string, email: string, endereco: string, numeroEnd: string,
     cep: string, bairro: string, municipio: string, uf: string) {
@@ -87,6 +96,13 @@ export class CompsalService {
         },
           (error) => {
             reject(error)
+            
+            this.Alerta(error.errors.messagem);
+            console.log("console antes");
+            console.log(error.message);
+            console.log(error.errors.message);
+            console.log("console depois");
+
           })
     });
   }
