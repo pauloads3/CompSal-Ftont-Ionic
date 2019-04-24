@@ -50,11 +50,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button slot="end" shape="round" fill="outline">Detalhar</ion-button>
-      <ion-button slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
-      <ion-button (click)="excluirUsuario(sumulas.id, sumulas.nome)" slot="end" shape="round" fill="outline"
-        color="danger">Deletar
-      </ion-button>
+      <ion-button  (click)="detalharUsuario(sumulas.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
+      <ion-button (click)="alterarUsuario(sumulas.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
+      <ion-button (click)="excluirUsuario(sumulas.id, sumulas.nome)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
     </ion-item>
   </ion-list>
 

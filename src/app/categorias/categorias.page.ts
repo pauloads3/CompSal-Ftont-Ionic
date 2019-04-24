@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompsalService } from '../compsal.service';
 import { AlertController } from '@ionic/angular';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categorias',
@@ -12,17 +13,39 @@ export class CategoriasPage implements OnInit {
 
   public lista_categorias = new Array<any>();
   model: Usuario;
-  constructor(private compsalService: CompsalService, private alertController: AlertController) { }
+  brmasker: BrMaskModel;
+  form: FormGroup;
 
+  constructor(
+
+    private formBuilder: FormBuilder,
+    private compsalService: CompsalService,
+    private alertController: AlertController,
+    ///public brMask: BrMaskDirective
+  ) {
+    this.forms();
+
+  }
+  forms() {
+    this.form = this.formBuilder.group({
+      nome: ['Paulo', Validators.required],
+      mask: [null, [Validators.maxLength(14)]],
+      maskk: [null, [Validators.maxLength(10)]],
+      cep: [null, [Validators.maxLength(10)]],
+      telefone: [null, [Validators.maxLength(17)]]
+    });
+
+  }
+  
   ngOnInit() {
-   console.log("ConsultarSumulaPage : ngOnInit()() ")
-    this.compsalService.get().subscribe( 
-      data=>{
+    console.log("ConsultarSumulaPage : ngOnInit()() ")
+    this.compsalService.get().subscribe(
+      data => {
         const respon = (data as any);
         const obj_retor = respon;// = JSON.parse(respon._body);
         this.lista_categorias = obj_retor;
         console.log(obj_retor);
-      },error => {
+      }, error => {
         console.log(error);
 
       }
@@ -38,11 +61,11 @@ export class CategoriasPage implements OnInit {
 
     await alert.present();
   }
-  async excluirUsuario(id:number, nome:string){
-    
+  async excluirUsuario(id: number, nome: string) {
+
     let alert = await this.alertController.create({
       header: 'Confimação!',
-      message: 'Deseja excluir o usuário: <h2>'+ nome +'</h2>',
+      message: 'Deseja excluir o usuário: <h2>' + nome + '</h2>',
       buttons: [
         {
           text: 'Cancelar',
@@ -54,7 +77,7 @@ export class CategoriasPage implements OnInit {
         }, {
           text: 'Confirmar',
           handler: () => {
-            this.compsalService.excluirUsuarioa(id);
+            this.compsalService.excluirUsuario(id);
             this.Alerta("Usuário excluído com sucesso!!!");
           }
         }
@@ -68,4 +91,21 @@ export class CategoriasPage implements OnInit {
 }
 export class Usuario {
   id: number;
+}
+class BrMaskModel {
+  form: FormControl;
+  mask: string;
+  len: number;
+  person: boolean;
+  phone: boolean;
+  phoneNotDDD: boolean;
+  money: boolean;
+  percent: boolean;
+  type: 'alfa' | 'num' | 'all';
+  decimal: number;
+  decimalCaracter: string;
+  thousand: string;
+  userCaracters: boolean;
+  numberAndTousand: boolean;
+  moneyInitHasInt: boolean;
 }

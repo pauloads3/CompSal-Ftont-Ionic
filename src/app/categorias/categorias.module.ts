@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { CategoriasPage } from './categorias.page';
+
+import { BrMaskerModule } from 'br-mask';
 
 const routes: Routes = [
   {
@@ -17,10 +19,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BrMaskerModule
   ],
+  
   declarations: [CategoriasPage]
 })
 export class CategoriasPageModule {}

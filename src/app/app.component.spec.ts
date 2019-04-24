@@ -55,6 +55,7 @@ describe('AppComponent', () => {
     expect(menuItems[2].textContent).toContain('categorias');
     expect(menuItems[3].textContent).toContain('cadastrar-arbitro');
     expect(menuItems[4].textContent).toContain('usuarios');
+    
   });
 
   it('should have urls', async () => {
@@ -68,6 +69,7 @@ describe('AppComponent', () => {
     expect(menuItems[2].getAttribute('ng-reflect-router-link')).toEqual('/categorias');
     expect(menuItems[3].getAttribute('ng-reflect-router-link')).toEqual('/cadastrar-arbitro');
     expect(menuItems[4].getAttribute('ng-reflect-router-link')).toEqual('/usuarios');
+   
   });
 
 });

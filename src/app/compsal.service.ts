@@ -8,14 +8,14 @@ import { AlertController } from '@ionic/angular';
 export class CompsalService {
 
   private URL = 'http://localhost:8080/';
-
   public items: any;
+
   constructor(public http: HttpClient, private alertController: AlertController) { this.getArbritos(); }
 
   getArbritos() {
     let data: any;
     data = this.http.get("http://localhost:8080/arbitros/3").subscribe(resut => { this.items = resut; });
-    console.log(this.items);
+    //console.log(this.items);
     this.http.get("http://localhost:8080/sumulas").subscribe(data => { console.log(data) });
   }
   get() {
@@ -85,47 +85,48 @@ export class CompsalService {
         municipio: municipio,
         uf: uf
       };
-      console.log("antes");
-      console.log(data);
-      console.log("depois");
+      let mensagens = "";
       this.http.post(this.URL + 'usuarios/createUsuario', data)
         .subscribe((result: any) => {
-
+          console.log(result);
+          if (result.id != null) {
+            this.Alerta("Usuário cadastrado com sucesso! <br><br>" + "Id: " + result.id + "<br>Nome: " + result.nome);
+          }
           resolve(result.data);
-          // console.log(result.json());
         },
           (error) => {
-            reject(error)
-            
-            this.Alerta(error.errors.messagem);
-            console.log("console antes");
-            console.log(error.message);
-            console.log(error.errors.message);
-            console.log("console depois");
-
+            if (error.name == "HttpErrorResponse" && error.statusText != "OK") {
+              this.Alerta("Verifique sua conexão! <br><br>" + error.statusText + "<br>" + error.url);
+            } else if (error.error.errors.length > 0) {
+              for (let index = 0; index < error.error.errors.length; index++) {
+                mensagens += "-" + error.error.errors[index].defaultMessage + "<br><br>";
+                //this.Alerta(error.error.errors[index].defaultMessage);  //para exibir uma a uma...
+              }
+              this.Alerta(mensagens);
+            } else {
+              this.Alerta(error.message);
+            }
           })
     });
+
   }
-  excluirUsuarioa(id: number) {
+  detalharUsuario(id: string) {
+    return this.http.get(this.URL + 'usuarios/' + id);
+  }
+  excluirUsuario(id: number) {
     return new Promise((resolve, reject) => {
       var data = {
-        id: id,
+        id: id
       };
-      console.log("antes");
       console.log(data);
-      console.log("depois");
-      this.http.post(this.URL + 'usuarios/deleteUsuario', data)
+      this.http.post(this.URL + 'usuarios/deleteUsuario', id)
         .subscribe((result: any) => {
 
           resolve(result.json());
           console.log(result);
-          console.log("!!!!!!!!!!");
-        },
+         },
           (error) => {
-            console.log(error.status);
             console.log(error.error); // error message as string
-            console.log(error.headers);
-
             reject(error)
           })
     });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompsalService } from '../compsal.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-usuarios',
@@ -12,7 +12,7 @@ export class UsuariosPage implements OnInit {
   public lista_categorias = new Array<any>();
   model: Usuario;
 
-  constructor(private compsalService: CompsalService, private alertController: AlertController) { }
+  constructor(private compsalService: CompsalService, private alertController: AlertController, private navController: NavController) { }
 
   ngOnInit() {
     this.compsalService.get().subscribe(
@@ -36,6 +36,16 @@ export class UsuariosPage implements OnInit {
 
     await alert.present();
   }
+
+  detalharUsuario(id: string){
+    this.navController.navigateForward(['/detalhar-usuario', id]);
+    
+  }
+
+  alterarUsuario(id: string){
+    this.navController.navigateForward(['/cadastrar-usuario', id]);
+    
+  }
   async excluirUsuario(id: number, nome: string) {
 
     let alert = await this.alertController.create({
@@ -52,7 +62,7 @@ export class UsuariosPage implements OnInit {
         }, {
           text: 'Confirmar',
           handler: () => {
-            this.compsalService.excluirUsuarioa(id);
+            this.compsalService.excluirUsuario(id);
             this.Alerta("Usuário excluído com sucesso!!!");
           }
         }

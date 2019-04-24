@@ -10,25 +10,31 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { BrMaskerModule } from 'br-mask';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { BrMaskerModule } from 'br-mask';
+//import { Ionic4MaskDirective } from 'ionic4-mask-directive';
+//import { InputMaskModule } from 'ionic-input-mask';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [
+  imports: [ 
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot(), 
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrMaskerModule
+    //InputMaskModule 
+    
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+

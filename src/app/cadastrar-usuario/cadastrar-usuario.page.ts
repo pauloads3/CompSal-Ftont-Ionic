@@ -14,7 +14,11 @@ export class CadastrarUsuarioPage implements OnInit {
   model: Usuario;
   private formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private compsalService: CompsalService, public alertController: AlertController) {
+  constructor(
+    private formBuilder: FormBuilder, 
+    private compsalService: CompsalService, 
+    public alertController: AlertController) {
+      
     this.model = new Usuario();
     this.formulario = this.formBuilder.group({
       cpf: ['', Validators.required],
@@ -58,7 +62,7 @@ export class CadastrarUsuarioPage implements OnInit {
   }
   excluirUsuario(id) {
 
-    this.compsalService.excluirUsuarioa(this.model.id)
+    this.compsalService.excluirUsuario(this.model.id)
 
   }
   async confirmacaoUsuario() {

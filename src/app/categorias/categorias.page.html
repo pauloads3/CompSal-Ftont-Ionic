@@ -3,36 +3,32 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Usuários</ion-title>
+    <ion-title>Categorias</ion-title>
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-  <ion-list>
+  <form [formGroup]="form">
     <ion-item>
-      <ion-label>Id </ion-label>
-      <ion-label>Nome</ion-label>
-      <ion-label></ion-label>
+        <ion-label position="floating">CPF:</ion-label>
+      <ion-input type="text" formControlName="mask" placeholder="Informe o CPF (000.000.000-00)"
+        [brmasker]="{form: form.get('mask'), mask:'000.000.000-00', len:14, type:'num'}"></ion-input>
     </ion-item>
-    <ion-item *ngFor="let sumulas of lista_categorias; let i = index">
-      <ion-label>{{sumulas.id}} </ion-label>
-      <ion-label>{{sumulas.nome}} </ion-label>
-      <ion-button slot="end" shape="round" fill="outline">Detalhar</ion-button>
-      <ion-button slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
-      <ion-button (click)="excluirUsuario(sumulas.id, sumulas.nome)" slot="end" shape="round" fill="outline" color="danger">Deletar
-      </ion-button>
+    <ion-item>
+      <ion-input type="text" formControlName="maskk" placeholder="Informe Data de Nascimento (DD/MM/AAAA)"
+        [brmasker]="{form: form.get('maskk'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
     </ion-item>
-  </ion-list>
-
-
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button routerLink="/cadastrar-arbitro">
-      <ion-icon name="add-circle"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-
-
+    <ion-item>
+        <ion-input type="text" formControlName="cep" placeholder="Informe o CEP (00.000-000)"
+          [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input type="text" formControlName="telefone" placeholder="Informe o Telefone ((00) 0 0000-0000)"
+            [brmasker]="{form: form.get('telefone'), mask:'(00) 0 0000-0000', len:17, type:'num'}"></ion-input>
+        </ion-item>
+        <ion-button type="submit"  [disabled]="!form.valid"  >!!!!!!!!!!!</ion-button>
+        
+  </form>
+  
 </ion-content>
