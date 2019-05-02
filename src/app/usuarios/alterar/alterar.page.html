@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Alterar Usuário</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <form [formGroup]="form" >
+        <ion-item>
+            <ion-label position="floating">Id:</ion-label>
+            <ion-input formControlName="id" [disabled]="true" clearInput>
+            </ion-input>
+          </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nome:</ion-label>
+        <ion-input formControlName="nome" maxLength="50" clearInput>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CPF:</ion-label>
+        <ion-input type="text" [disabled]="true" formControlName="cpf" [brmasker]="{form: form.get('cpf'), mask:'000.000.000-00', len:14, type:'num'}"
+          clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apelido:</ion-label>
+        <ion-input formControlName="apelido" maxLength="20" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data de Nascimento:</ion-label>
+        <ion-input formControlName="dtNascimento" clearInput [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sexo:</ion-label>
+        <ion-select clearInput formControlName="sexo" [interfaceOptions]="customPopoverOptions" interface="popover">
+          <ion-select-option value="M">Masculino</ion-select-option>
+          <ion-select-option value="F">Feminino</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Celular:</ion-label>
+        <ion-input type="text" formControlName="telefone" clearInput
+          [brmasker]="{form: form.get('telefone'), mask:'(00) 0 0000-0000', len:17, type:'num' }"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">E-mail:</ion-label>
+        <ion-input formControlName="email" maxLength="50" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Endereço:</ion-label>
+        <ion-input formControlName="endereco" maxLength="50" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nº:</ion-label>
+        <ion-input formControlName="numeroEnd" maxLength="10" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CEP:</ion-label>
+        <ion-input type="text" clearInput formControlName="cep" [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Bairro:</ion-label>
+        <ion-input formControlName="bairro" maxLength="50" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Município:</ion-label>
+        <ion-input formControlName="municipio" maxLength="50" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">UF:</ion-label>
+        <ion-select clearInput formControlName="uf" [interfaceOptions]="customPopoverOptions" interface="popover">
+          <ion-select-option value="AC">AC</ion-select-option>
+          <ion-select-option value="AL">AL</ion-select-option>
+          <ion-select-option value="AP">AP</ion-select-option>
+          <ion-select-option value="AM">AM</ion-select-option>
+          <ion-select-option value="BA">BA</ion-select-option>
+          <ion-select-option value="CE">CE</ion-select-option>
+          <ion-select-option value="DF">DF</ion-select-option>
+          <ion-select-option value="ES">ES</ion-select-option>
+          <ion-select-option value="GO">GO</ion-select-option>
+          <ion-select-option value="MA">MA</ion-select-option>
+          <ion-select-option value="MT">MT</ion-select-option>
+          <ion-select-option value="MS">MS</ion-select-option>
+          <ion-select-option value="MG">MG</ion-select-option>
+          <ion-select-option value="PA">PA</ion-select-option>
+          <ion-select-option value="PB">PB</ion-select-option>
+          <ion-select-option value="PR">PR</ion-select-option>
+          <ion-select-option value="PE">PE</ion-select-option>
+          <ion-select-option value="PI">PI</ion-select-option>
+          <ion-select-option value="RJ">RJ</ion-select-option>
+          <ion-select-option value="RN">RN</ion-select-option>
+          <ion-select-option value="RS">RS</ion-select-option>
+          <ion-select-option value="RO">RO</ion-select-option>
+          <ion-select-option value="RR">RR</ion-select-option>
+          <ion-select-option value="SC">SC</ion-select-option>
+          <ion-select-option value="SP">SP</ion-select-option>
+          <ion-select-option value="SE">SE</ion-select-option>
+          <ion-select-option value="TO">TO</ion-select-option>
+          <ion-select-option value="EX">Exterior</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button type="submit" (click)="criarUsuario()">Cadastrar</ion-button>
+    </form>
+  </ion-content>
+  <ion-toolbar>
+    <ion-button (click)="alterarUsuario()" type="submit" [disabled]="!form.valid" expand="full" fill="outline" shape="round">Alterar</ion-button>
+    <ion-item>{{form.value | json}}</ion-item>
+  </ion-toolbar>

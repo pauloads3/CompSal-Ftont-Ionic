@@ -19,10 +19,12 @@ const routes: Routes = [
    loadChildren: './categorias/categorias.module#CategoriasPageModule' },
   { path: 'cadastrar-arbitro', loadChildren: './cadastrar-arbitro/cadastrar-arbitro.module#CadastrarArbitroPageModule' },
   { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosPageModule' },
-  { path: 'cadastrar-usuario', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
-  { path: 'cadastrar-usuario/:id', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
-  { path: 'detalhar-usuario/:id', loadChildren: './detalhar-usuario/detalhar-usuario.module#DetalharUsuarioPageModule' }
-  
+  { path: 'cadastrarUsuario', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
+  { path: 'alterarUsuario/:id', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
+  { path: 'detalharUsuario/:id', loadChildren: './detalhar-usuario/detalhar-usuario.module#DetalharUsuarioPageModule' },
+  { path: 'usuarios/detalhar/:id', loadChildren: './usuarios/detalhar/detalhar.module#DetalharPageModule' },
+  { path: 'usuarios/alterar/:id', loadChildren: './usuarios/alterar/alterar.module#AlterarPageModule' }
+ 
 ];
 
 @NgModule({

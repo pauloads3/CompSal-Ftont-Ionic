@@ -10,6 +10,11 @@
 <ion-content>
 
   <form [formGroup]="form">
+      <ion-item>
+          <ion-input type="text" formControlName="phone" [value]="form.get('phone').value" name="phone" placeholder="Phone" [brmasker]="{form: form.get('phone'), numberAndTousand: false, thousand: ','}"></ion-input>
+        </ion-item>
+    
+    
     <ion-item>
         <ion-label position="floating">CPF:</ion-label>
       <ion-input type="text" formControlName="mask" placeholder="Informe o CPF (000.000.000-00)"
@@ -29,6 +34,8 @@
         </ion-item>
         <ion-button type="submit"  [disabled]="!form.valid"  >!!!!!!!!!!!</ion-button>
         
+
+
   </form>
   
 </ion-content>

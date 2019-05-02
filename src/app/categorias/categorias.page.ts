@@ -32,7 +32,8 @@ export class CategoriasPage implements OnInit {
       mask: [null, [Validators.maxLength(14)]],
       maskk: [null, [Validators.maxLength(10)]],
       cep: [null, [Validators.maxLength(10)]],
-      telefone: [null, [Validators.maxLength(17)]]
+      telefone: [null, [Validators.maxLength(17)]],
+      phone:null
     });
 
   }
@@ -86,7 +87,6 @@ export class CategoriasPage implements OnInit {
 
     await alert.present();
   }
-
 
 }
 export class Usuario {

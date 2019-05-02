@@ -15,6 +15,10 @@ export class UsuariosPage implements OnInit {
   constructor(private compsalService: CompsalService, private alertController: AlertController, private navController: NavController) { }
 
   ngOnInit() {
+   this.carregarDados();
+  }
+
+  carregarDados(){
     this.compsalService.get().subscribe(
       data => {
         const respon = (data as any);
@@ -27,6 +31,7 @@ export class UsuariosPage implements OnInit {
       }
     );
   }
+
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
@@ -38,12 +43,16 @@ export class UsuariosPage implements OnInit {
   }
 
   detalharUsuario(id: string){
-    this.navController.navigateForward(['/detalhar-usuario', id]);
+    this.navController.navigateForward(['/usuarios/detalhar', id]);
     
   }
 
+  ionViewWillEnter(){
+    this.carregarDados();
+  }
+
   alterarUsuario(id: string){
-    this.navController.navigateForward(['/cadastrar-usuario', id]);
+    this.navController.navigateForward(['/usuarios/alterar', id]);
     
   }
   async excluirUsuario(id: number, nome: string) {
@@ -57,13 +66,18 @@ export class UsuariosPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
+            this.ionViewWillEnter();
+            console.log("*** excluirUsuario() --> this.ionViewWillEnter()");
             this.Alerta('Operação cancelada!');
-          }
+                      }
         }, {
           text: 'Confirmar',
           handler: () => {
             this.compsalService.excluirUsuario(id);
+            console.log("*** excluirUsuario() --> this.ionViewWillEnter()  2");
+            this.ionViewWillEnter();
             this.Alerta("Usuário excluído com sucesso!!!");
+            this.carregarDados();
           }
         }
       ]
