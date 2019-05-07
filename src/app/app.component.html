@@ -2,15 +2,15 @@
   <ion-split-pane>
     <ion-menu>
       <ion-header>
-        <ion-toolbar color="danger">
+        <ion-toolbar color="medium">
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="warning">
+      <ion-content color="light">
         <ion-list >
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages">
             <ion-item  [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon color="danger" slot="start" [name]="p.icon"></ion-icon>
+              <ion-icon color="medium" slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>
