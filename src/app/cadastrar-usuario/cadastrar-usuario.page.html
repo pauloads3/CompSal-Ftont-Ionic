@@ -20,8 +20,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">CPF:</ion-label>
-      <ion-input type="text" formControlName="cpf" [brmasker]="{form: form.get('cpf'), mask:'000.000.000-00', len:14, type:'num'}"
-        clearInput></ion-input>
+      <ion-input type="text" formControlName="cpf"
+        [brmasker]="{form: form.get('cpf'), mask:'000.000.000-00', len:14, type:'num'}" clearInput></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Apelido:</ion-label>
@@ -29,7 +29,8 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Data de Nascimento:</ion-label>
-      <ion-input formControlName="dtNascimento" clearInput [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
+      <ion-input formControlName="dtNascimento" clearInput
+        [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Sexo:</ion-label>
@@ -53,11 +54,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nº:</ion-label>
-      <ion-input formControlName="numeroEnd" maxLength="10"clearInput></ion-input>
+      <ion-input formControlName="numeroEnd" maxLength="10" clearInput></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">CEP:</ion-label>
-      <ion-input type="text" clearInput formControlName="cep" [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
+      <ion-input type="text" clearInput formControlName="cep"
+        [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Bairro:</ion-label>
@@ -100,11 +102,11 @@
         <ion-select-option value="EX">Exterior</ion-select-option>
       </ion-select>
     </ion-item>
-    <!--on-button type="submit" (click)="criarUsuario()">Cadastrar</ion-button>           -->
+    <!--on-button type="submit" (click)="criarUsuario()">Cadastrar</ion-button>   [disabled]="!form.valid"        -->
   </form>
 </ion-content>
 <ion-toolbar>
-  <ion-button (click)="criarUsuario()" type="submit" [disabled]="!form.valid" expand="full" fill="outline" shape="round">Cadastrar
+  <ion-button (click)="criarUsuario()" type="submit" expand="full" fill="outline" shape="round">Cadastrar
   </ion-button>
   <ion-item>{{form.value | json}}</ion-item>
 </ion-toolbar>
