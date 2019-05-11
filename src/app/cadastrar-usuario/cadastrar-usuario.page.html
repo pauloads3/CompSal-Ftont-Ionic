@@ -20,7 +20,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">CPF:</ion-label>
-      <ion-input type="text" formControlName="cpf"
+      <ion-input type="text" formControlName="cpf" maxLength="14"
         [brmasker]="{form: form.get('cpf'), mask:'000.000.000-00', len:14, type:'num'}" clearInput></ion-input>
     </ion-item>
     <ion-item>
@@ -29,7 +29,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Data de Nascimento:</ion-label>
-      <ion-input formControlName="dtNascimento" clearInput
+      <ion-input formControlName="dtNascimento" clearInput maxLength="10"
         [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
     </ion-item>
     <ion-item>
@@ -41,7 +41,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Celular:</ion-label>
-      <ion-input type="text" formControlName="telefone" clearInput
+      <ion-input type="text" formControlName="telefone" clearInput maxLength="17"
         [brmasker]="{form: form.get('telefone'), mask:'(00) 0 0000-0000', len:17, type:'num' }"></ion-input>
     </ion-item>
     <ion-item>
@@ -58,7 +58,7 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">CEP:</ion-label>
-      <ion-input type="text" clearInput formControlName="cep"
+      <ion-input type="text" clearInput formControlName="cep" maxLength="10"
         [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
     </ion-item>
     <ion-item>
@@ -106,7 +106,7 @@
   </form>
 </ion-content>
 <ion-toolbar>
-  <ion-button (click)="criarUsuario()" type="submit" expand="full" fill="outline" shape="round">Cadastrar
+  <ion-button (click)="criarUsuario()" type="submit" expand="full" [disabled]="!form.valid" fill="outline" shape="round">Cadastrar
   </ion-button>
   <ion-item>{{form.value | json}}</ion-item>
 </ion-toolbar>

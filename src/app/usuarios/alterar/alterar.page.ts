@@ -14,9 +14,9 @@ export class AlterarPage implements OnInit {
 
   form: FormGroup;
   idUsuario = null; ////
-  usuario :any;
+  usuario: any;
 
-  
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,33 +27,33 @@ export class AlterarPage implements OnInit {
 
     this.forms();
     this.pegarUsuario();
-   // this.alterarUsuario();
-    
+    // this.alterarUsuario();
+
   }
 
   ngOnInit() {
     let idUsuario;
     console.log(idUsuario = this.activatedRoute.snapshot.paramMap.get('id'));
     console.log(this.form.value);
-    console.log("666"+this.usuario);
+    console.log("666" + this.usuario);
     console.log(this.form.setValue(this.usuario));
     console.log(this.form.value);
   }
-  
-  alterarUsuarioOld(){
+
+  alterarUsuarioOld() {
     console.log("***alterarUsuario() Inicio");
     this.idUsuario = this.activatedRoute.snapshot.paramMap.get('id');
-    
+
     //this.usuario = this.compsalService.detalharUsuario(this.idUsuario);
     console.log("antes usuario");
-    var usu:any;
+    var usu: any;
     console.log("antes usu!!");
     console.log(usu);
     this.compsalService.detalharUsuario(this.idUsuario).subscribe((result: any) => {
       this.form.setValue = result;
       //resolve(result.json());
-     // console.log(usuario);
-     console.log(result.nome);
+      // console.log(usuario);
+      console.log(result.nome);
       console.log(this.form.value.nome);
     });
     console.log("antes usu");
@@ -82,7 +82,7 @@ export class AlterarPage implements OnInit {
 
     console.log("***forms() FIM");
   }
-    
+
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
@@ -93,45 +93,79 @@ export class AlterarPage implements OnInit {
     await alert.present();
   }
 
-pegarUsuario(){
+  pegarUsuario() {
 
-  console.log("***pegarUsuario() Inicio");
-  this.idUsuario = this.activatedRoute.snapshot.paramMap.get('id');
-    
-  //this.usuario = this.compsalService.detalharUsuario(this.idUsuario);
-  console.log("antes usuario");
-  var usu:any;
-  console.log("antes usu!!");
-  console.log(usu);
-  this.compsalService.detalharUsuario(this.idUsuario).subscribe((result: any) => {
-    this.usuario = result;
+    console.log("***pegarUsuario() Inicio");
+    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('id');
 
-    console.log(this.form.value);
-    console.log("666"+this.usuario.nome);
-    console.log(this.form.setValue(this.usuario));
-    console.log(this.form.value);
+    //this.usuario = this.compsalService.detalharUsuario(this.idUsuario);
+    console.log("antes usuario");
+    var usu: any;
+    console.log("antes usu!!");
+    console.log(usu);
+    this.compsalService.detalharUsuario(this.idUsuario).subscribe((result: any) => {
+      this.usuario = result;
 
-    //console.log(result);
-    console.log(this.usuario);
-    console.log("!!!!!!!!!!");
-  });
-  console.log("antes usu");
-  console.log(usu);
-  console.log("***pegarUsuario() Fim");
-}
+      console.log(this.form.value);
+      console.log("666" + this.usuario.nome);
+      console.log(this.form.setValue(this.usuario));
+      console.log(this.form.value);
 
-  
-alterarUsuario() {
-    
+      //console.log(result);
+      console.log(this.usuario);
+      console.log("!!!!!!!!!!");
+    });
+    console.log("antes usu");
+    console.log(usu);
+    console.log("***pegarUsuario() Fim");
+  }
+
+  validaData(valor) {
+    var erro: any;
+    var date = valor;
+    var ardt = new Array;
+    var ExpReg = new RegExp("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}");
+    ardt = date.split("/");
+    erro = false;
+    if (date.search(ExpReg) == -1) {
+      erro = true;
+    } else if (((ardt[1] == 4) || (ardt[1] == 6) || (ardt[1] == 9) || (ardt[1] == 11)) && (ardt[0] > 30))
+      erro = true;
+    else if (ardt[1] == 2) {
+      if ((ardt[0] > 28) && ((ardt[2] % 4) != 0))
+        erro = true;
+      if ((ardt[0] > 29) && ((ardt[2] % 4) == 0))
+        erro = true;
+    }
+    if (erro) {
+      console.log("*** validaDat() false");
+      return false;
+    }
+    console.log("*** validaDat() true");
+    return true;
+  }
+
+  alterarUsuario() {
+
     console.log('***alterarUsuario() Inicio');
     console.log(this.form.value);
-    this.compsalService.alterarUsuario(this.form.value);
-    //this.forms();
-    this.router.navigate(['/usuarios']);
-    this.Alerta('Usuário alterado com sucesso!');
-    console.log('***alterarUsuario() FIM');
+
+    // Falta ajustar a data...
+    if (this.validaData(this.form.value.dtNascimento)) {
+      this.Alerta("Data valida!! ");
+      this.validaData(this.form.value.dtNascimento);
+      this.compsalService.alterarUsuario(this.form.value);
+      //this.forms();
+      this.router.navigate(['/usuarios']);
+      this.Alerta('Usuário alterado com sucesso!');
+      console.log('***alterarUsuario() FIM');
+    } else {
+      this.Alerta("Data Invalida!!!!! ");
+    }
+
+
 
   }
-  
-  
+
+
 }

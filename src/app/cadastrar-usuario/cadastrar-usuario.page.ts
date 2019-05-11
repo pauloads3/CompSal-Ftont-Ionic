@@ -53,7 +53,7 @@ export class CadastrarUsuarioPage implements OnInit {
     this.form = this.formBuilder.group({
       id: null,
       nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      cpf: [null, [Validators.minLength(14), Validators.maxLength(14)]],
+      cpf: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
       apelido: [null, [Validators.maxLength(20)]],
       dtNascimento: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       sexo: [null, [Validators.required]],
@@ -61,7 +61,7 @@ export class CadastrarUsuarioPage implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       endereco: [null, [Validators.required, Validators.maxLength(50)]],
       numeroEnd: [null, [Validators.required, Validators.maxLength(50)]],
-      cep: [null, [Validators.required]],
+      cep: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       bairro: [null, [Validators.required, Validators.maxLength(50)]],
       municipio: [null, [Validators.required, Validators.maxLength(50)]],
       uf: [null, [Validators.required]]

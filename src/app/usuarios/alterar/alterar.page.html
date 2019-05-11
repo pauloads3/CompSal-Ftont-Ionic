@@ -32,7 +32,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Data de Nascimento:</ion-label>
-        <ion-input formControlName="dtNascimento" clearInput [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
+        <ion-input formControlName="dtNascimento" maxLength="10" clearInput [brmasker]="{form: form.get('dtNascimento'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Sexo:</ion-label>
@@ -43,7 +43,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Celular:</ion-label>
-        <ion-input type="text" formControlName="telefone" clearInput
+        <ion-input type="text" formControlName="telefone" clearInput maxLength="17"
           [brmasker]="{form: form.get('telefone'), mask:'(00) 0 0000-0000', len:17, type:'num' }"></ion-input>
       </ion-item>
       <ion-item>
@@ -60,7 +60,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">CEP:</ion-label>
-        <ion-input type="text" clearInput formControlName="cep" [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
+        <ion-input type="text" clearInput formControlName="cep" maxLength="10" [brmasker]="{form: form.get('cep'), mask:'00.000-000', len:10, type:'num'}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Bairro:</ion-label>

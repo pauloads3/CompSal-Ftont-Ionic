@@ -36,8 +36,8 @@ export class AppComponent {
       icon: 'people'
     },
     {
-      title: 'Equipes',
-      url: '/Equipes',
+      title: 'Times',
+      url: '/times',
       icon: 'happy'
     },
     {
