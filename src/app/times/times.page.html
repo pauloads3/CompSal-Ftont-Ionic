@@ -1,9 +1,67 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>times</ion-title>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Times</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
+
+   
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row >
+          <ion-col size="1">
+            <div>
+              Id
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <div>
+              Nome
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <div>
+              Apelido
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let sumulas of lista_categorias; let i = index">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <div>
+              {{sumulas.id}}
+            </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>
+              {{sumulas.nome}}
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <div>
+              {{sumulas.apelido}}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button  (click)="detalharTime(sumulas.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
+      <ion-button (click)="alterarTime(sumulas.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
+      <ion-button (click)="excluirUsuario(sumulas.id, sumulas.nome)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/times/cadastrar">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

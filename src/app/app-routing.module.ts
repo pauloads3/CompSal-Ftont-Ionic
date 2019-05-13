@@ -25,9 +25,9 @@ const routes: Routes = [
   { path: 'usuarios/detalhar/:id', loadChildren: './usuarios/detalhar/detalhar.module#DetalharPageModule' },
   { path: 'usuarios/alterar/:id', loadChildren: './usuarios/alterar/alterar.module#AlterarPageModule' },
   { path: 'times', loadChildren: './times/times.module#TimesPageModule' },
-  { path: 'alterar', loadChildren: './times/alterar/alterar.module#AlterarPageModule' },
-  { path: 'detalhar', loadChildren: './times/detalhar/detalhar.module#DetalharPageModule' },
-  { path: 'cadastrar', loadChildren: './times/cadastrar/cadastrar.module#CadastrarPageModule' }
+  { path: 'times/alterar/:id', loadChildren: './times/alterar/alterar.module#AlterarPageModule' },
+  { path: 'times/detalhar/:id', loadChildren: './times/detalhar/detalhar.module#DetalharPageModule' },
+  { path: 'times/cadastrar', loadChildren: './times/cadastrar/cadastrar.module#CadastrarPageModule' }
  
 ];
 

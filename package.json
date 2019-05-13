@@ -28,6 +28,7 @@
     "br-mask": "0.0.6",
     "core-js": "2.6.5",
     "ionic-input-mask": "^1.0.1",
+    "ionic4-auto-complete": "^1.6.1",
     "ionic4-mask-directive": "1.0.2",
     "rxjs": "6.5.1",
     "rxjs-compat": "^6.5.1",

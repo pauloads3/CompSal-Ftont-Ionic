@@ -16,6 +16,8 @@ import { BrMaskerModule } from 'br-mask';
 //import { Ionic4MaskDirective } from 'ionic4-mask-directive';
 //import { InputMaskModule } from 'ionic-input-mask';
 
+import { AutoCompleteModule } from 'ionic4-auto-complete';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,7 +27,8 @@ import { BrMaskerModule } from 'br-mask';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrMaskerModule
+    BrMaskerModule,
+    AutoCompleteModule
     //InputMaskModule 
     
   ],
