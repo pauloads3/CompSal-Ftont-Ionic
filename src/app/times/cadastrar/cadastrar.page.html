@@ -18,8 +18,8 @@
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Sexo:</ion-label>
-      <ion-select clearInput formControlName="sexo" [interfaceOptions]="customPopoverOptions" interface="popover"
+      <ion-label position="floating">Gênero:</ion-label>
+      <ion-select clearInput formControlName="genero" [interfaceOptions]="customPopoverOptions" interface="popover"
         [disabled]="formTime.value.goleiro != null 
         || formTime.value.fixo != null
         || formTime.value.alaDireita != null
@@ -35,127 +35,220 @@
     <ion-item>
       <ion-label position="floating">Goleiro</ion-label>
 
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="goleiro" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="goleiro" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="goleiro" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="goleiro" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="goleiro" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="goleiro" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
 
     </ion-item>
     <ion-item>
       <ion-label position="floating">Fixo</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" [compareWith]="compareWith" formControlName="fixo"
+      <ion-select *ngIf="formTipo.value.genero == 'F'" [compareWith]="compareWith" formControlName="fixo"
         interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" [compareWith]="compareWith" formControlName="fixo"
+      <ion-select *ngIf="formTipo.value.genero == 'M'" [compareWith]="compareWith" formControlName="fixo"
         interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" [compareWith]="compareWith" formControlName="fixo"
+      <ion-select *ngIf="formTipo.value.genero == null" [compareWith]="compareWith" formControlName="fixo"
         interface="action-sheet" clearInput [disabled]=true>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Ala Direita</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="alaDireita" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="alaDireita" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="alaDireita" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="alaDireita" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="alaDireita" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="alaDireita" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Ala Esquerda</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="alaEsquerda" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="alaEsquerda" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="alaEsquerda" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="alaEsquerda" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="alaEsquerda" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="alaEsquerda" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
 
     </ion-item>
     <ion-item>
       <ion-label position="floating">Pivo</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="pivo" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="pivo" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="pivo" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="pivo" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="pivo" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="pivo" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Treinador</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="treinador" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="treinador" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="treinador" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="treinador" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="treinador" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="treinador" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
 
     </ion-item>
     <ion-item>
       <ion-label position="floating">Massagista</ion-label>
-      <ion-select *ngIf="formTipo.value.sexo == 'F'" formControlName="massagista" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="massagista" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == 'M'" formControlName="massagista" interface="action-sheet" clearInput>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="massagista" interface="action-sheet" clearInput>
         <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
           {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
         </ion-select-option>
       </ion-select>
-      <ion-select *ngIf="formTipo.value.sexo == null" formControlName="massagista" interface="action-sheet" clearInput
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="massagista" interface="action-sheet" clearInput
         [disabled]=true>
       </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Jogador Reserva 1</ion-label>
+      <ion-select *ngIf="formTipo.value.genero == 'F'" formControlName="jogadorReserva1" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == 'M'" formControlName="jogadorReserva1" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == null" formControlName="jogadorReserva1" interface="action-sheet"
+        clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Jogador Reserva 2</ion-label>
+      <ion-select *ngIf="formTipo.value.genero == 'F' && formTime.value.jogadorReserva1 != null "
+        formControlName="jogadorReserva2" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == 'M' && formTime.value.jogadorReserva1 != null"
+        formControlName="jogadorReserva2" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == null && formTime.value.jogadorReserva1 == null"
+        formControlName="jogadorReserva2" interface="action-sheet" clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Jogador Reserva 3</ion-label>
+      <ion-select *ngIf="formTipo.value.genero == 'F' && formTime.value.jogadorReserva2 != null "
+        formControlName="jogadorReserva3" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == 'M' && formTime.value.jogadorReserva2 != null"
+        formControlName="jogadorReserva3" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == null && formTime.value.jogadorReserva2 == null"
+        formControlName="jogadorReserva3" interface="action-sheet" clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Jogador Reserva 4</ion-label>
+      <ion-select *ngIf="formTipo.value.genero == 'F' && formTime.value.jogadorReserva3 != null "
+        formControlName="jogadorReserva4" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == 'M' && formTime.value.jogadorReserva3 != null"
+        formControlName="jogadorReserva4" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == null && formTime.value.jogadorReserva3 == null"
+        formControlName="jogadorReserva4" interface="action-sheet" clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Jogador Reserva 5</ion-label>
+      <ion-select *ngIf="formTipo.value.genero == 'F' && formTime.value.jogadorReserva4 != null "
+        formControlName="jogadorReserva5" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == 'M' && formTime.value.jogadorReserva4 != null"
+        formControlName="jogadorReserva5" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formTipo.value.genero == null && formTime.value.jogadorReserva4 == null"
+        formControlName="jogadorReserva5" interface="action-sheet" clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+
   </form>
 
 </ion-content>
 <ion-toolbar>
-  <ion-button (click)="criarTime()" type="submit" expand="full" [disabled]="!formTime.valid || !formTipo.valid" fill="outline"
-    shape="round">Cadastrar
+  <ion-button (click)="criarTime()" type="submit" expand="full" [disabled]="!formTime.valid || !formTipo.valid"
+    fill="outline" shape="round">Cadastrar
   </ion-button>
 
   <ion-item>{{formTime.value | json}}</ion-item>

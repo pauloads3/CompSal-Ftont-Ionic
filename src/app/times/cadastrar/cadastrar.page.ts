@@ -35,30 +35,66 @@ export class CadastrarPage implements OnInit {
   }
 
   criarTime() {
-    this.ValidarUsuarios();
+    let mensagens = "";
+    let pessoas: Array<number> = new Array<number>();
+    pessoas[0] = this.formTime.value.goleiro;
+    pessoas[1] = this.formTime.value.fixo;
+    pessoas[2] = this.formTime.value.alaDireita;
+    pessoas[3] = this.formTime.value.alaEsquerda;
+    pessoas[4] = this.formTime.value.pivo;
+    pessoas[5] = this.formTime.value.treinador;
+    pessoas[6] = this.formTime.value.massagista;
+    pessoas[7] = this.formTime.value.jogadorReserva1;
+    pessoas[8] = this.formTime.value.jogadorReserva2;
+    pessoas[9] = this.formTime.value.jogadorReserva3;
+    pessoas[10] = this.formTime.value.jogadorReserva4;
+    pessoas[11] = this.formTime.value.jogadorReserva5;
 
 
+    let pessoaOk: Boolean;
+    pessoaOk = true;
+    for (let i = 0; i < 12 && pessoaOk; i++) {
+      for (let j = 0; j < 12; j++) {
+        if (i != j) {
+          if (pessoas[i] == pessoas[j] && pessoas[i] != null) {
+            console.log("Pessoa duplicada. i=" + i + "-Id=" + pessoas[i] + ", j=" + j + "-Id=" + pessoas[j]);
+            pessoaOk = false;
+            mensagens += pessoas[i];
+            break;
+          }
+        }
+      }
+    }
+    if (!pessoaOk) {
+      this.Alerta("Existe usuários repitidos!!!<br><br>" + "ID do usuário: " + mensagens);
+    }else{
+    this.compsalService.cadastarTime(this.formTipo.value);
+    }
   }
   forms() {
     this.formTime = this.formBuilder.group({
-      id: null,
-      nome: [null, [Validators.minLength(5), Validators.maxLength(50)]],
       goleiro: [null, [Validators.required]],
       fixo: [null, [Validators.required]],
       alaDireita: [null, [Validators.required]],
       alaEsquerda: [null, [Validators.required]],
       pivo: [null, [Validators.required]],
       treinador: [null, [Validators.required]],
-      massagista: [null, [Validators.required]]
+      massagista: [null, [Validators.required]],
+      jogadorReserva1: null,
+      jogadorReserva2: null,
+      jogadorReserva3: null,
+      jogadorReserva4: null,
+      jogadorReserva5: null
     });
     this.formTipo = this.formBuilder.group({
       id: null,
       nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      sexo: [null, [Validators.required]]
+      genero: [null, [Validators.required]]
     });
 
 
   }
+
 
   getResults(keyword: string) {
     return "Teste";
@@ -90,16 +126,8 @@ export class CadastrarPage implements OnInit {
       }
     );
   }
-  ValidarUsuarios(){
-    if (this.formTime.value.goleiro == [
-      this.formTime.value.fixo || 
-      this.formTime.value.alaDireita || 
-      this.formTime.value.alaEsquerda || 
-      this.formTime.value.pivo || 
-      this.formTime.value.treinador || 
-      this.formTime.value.massagista]) {
-        this.Alerta("(Goleiro) Existe Usuario em duplicidade!");
-    }
+  ValidarUsuarios() {
+
   }
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
