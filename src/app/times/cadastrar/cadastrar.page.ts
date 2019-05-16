@@ -13,7 +13,6 @@ import { Usuario } from 'src/app/categorias/categorias.page';
 export class CadastrarPage implements OnInit {
 
   formTime: FormGroup;
-  formTipo: FormGroup;
   lista_usuariosM = new Array<any>();
   lista_usuariosF = new Array<any>();
   lista_categorias = [{ id: 1, nome: 'Paulo' }, { id: 2, nome: 'Roberto' }, { id: 3, nome: 'Vivianne' }];
@@ -67,12 +66,16 @@ export class CadastrarPage implements OnInit {
     }
     if (!pessoaOk) {
       this.Alerta("Existe usuários repitidos!!!<br><br>" + "ID do usuário: " + mensagens);
-    }else{
-    this.compsalService.cadastarTime(this.formTipo.value);
+    } else {
+      console.log(this.formTime.value);
+      this.compsalService.cadastarTime(this.formTime.value);
     }
   }
   forms() {
     this.formTime = this.formBuilder.group({
+      id:null,     
+      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      genero: [null, [Validators.required]],
       goleiro: [null, [Validators.required]],
       fixo: [null, [Validators.required]],
       alaDireita: [null, [Validators.required]],
@@ -86,13 +89,6 @@ export class CadastrarPage implements OnInit {
       jogadorReserva4: null,
       jogadorReserva5: null
     });
-    this.formTipo = this.formBuilder.group({
-      id: null,
-      nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      genero: [null, [Validators.required]]
-    });
-
-
   }
 
 
@@ -126,9 +122,7 @@ export class CadastrarPage implements OnInit {
       }
     );
   }
-  ValidarUsuarios() {
-
-  }
+  
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',

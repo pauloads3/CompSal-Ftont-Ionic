@@ -24,6 +24,9 @@ export class CompsalService {
   get() {
     return this.http.get(this.URL + 'usuarios');
   }
+  getTimes() {
+    return this.http.get(this.URL + 'times');
+  }
   getUsuariosMasculino() {
     return this.http.get(this.URL + 'usuarios/findAllM');
   }
@@ -116,19 +119,13 @@ export class CompsalService {
         .subscribe((result: any) => {
           console.log(result);
           if (result.id != null) {
-            this.Alerta("Usuário cadastrado com sucesso! <br><br>" + "Id: " + result.id + "<br>Nome: " + result.nome);
+            this.Alerta("Time cadastrado com sucesso! <br><br>" + "Id: " + result.id + "<br>Nome: " + result.nome);
           }
           resolve(result.data);
         },
           (error) => {
             if (error.name == "HttpErrorResponse" && error.statusText != "OK") {
               this.Alerta("Verifique sua conexão! <br><br>" + error.statusText + "<br>" + error.url);
-            } else if (error.error.errors.length > 0) {
-              for (let index = 0; index < error.error.errors.length; index++) {
-                mensagens += "-" + error.error.errors[index].defaultMessage + "<br><br>";
-                //this.Alerta(error.error.errors[index].defaultMessage);  //para exibir uma a uma...
-              }
-              this.Alerta(mensagens);
             } else {
               this.Alerta(error.message);
             }

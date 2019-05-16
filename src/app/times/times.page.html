@@ -32,29 +32,29 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-    <ion-item *ngFor="let sumulas of lista_categorias; let i = index">
+    <ion-item *ngFor="let time of lista_times; let i = index">
       <ion-grid>
         <ion-row>
           <ion-col size="1">
             <div>
-              {{sumulas.id}}
+              {{time.id}}
             </div>
           </ion-col>
           <ion-col size="5">
             <div>
-              {{sumulas.nome}}
+              {{time.nome}}
             </div>
           </ion-col>
           <ion-col size="3">
             <div>
-              {{sumulas.genero}}
+              {{time.genero}}
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button  (click)="detalharTime(sumulas.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
-      <ion-button (click)="alterarTime(sumulas.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
-      <ion-button (click)="excluirUsuario(sumulas.id, sumulas.nome)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
+      <ion-button  (click)="detalharTime(time.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
+      <ion-button (click)="alterarTime(time.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
+      <ion-button (click)="excluirTime(time.id, time.nome)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
     </ion-item>
   </ion-list>
 
