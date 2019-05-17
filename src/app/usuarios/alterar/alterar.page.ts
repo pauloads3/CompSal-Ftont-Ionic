@@ -16,8 +16,6 @@ export class AlterarPage implements OnInit {
   idUsuario = null; ////
   usuario: any;
 
-
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -32,35 +30,9 @@ export class AlterarPage implements OnInit {
   }
 
   ngOnInit() {
-    let idUsuario;
-    console.log(idUsuario = this.activatedRoute.snapshot.paramMap.get('id'));
-    console.log(this.form.value);
-    console.log("666" + this.usuario);
-    console.log(this.form.setValue(this.usuario));
-    console.log(this.form.value);
+    
   }
-
-  alterarUsuarioOld() {
-    console.log("***alterarUsuario() Inicio");
-    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('id');
-
-    //this.usuario = this.compsalService.detalharUsuario(this.idUsuario);
-    console.log("antes usuario");
-    var usu: any;
-    console.log("antes usu!!");
-    console.log(usu);
-    this.compsalService.detalharUsuario(this.idUsuario).subscribe((result: any) => {
-      this.form.setValue = result;
-      //resolve(result.json());
-      // console.log(usuario);
-      console.log(result.nome);
-      console.log(this.form.value.nome);
-    });
-    console.log("antes usu");
-    console.log(usu);
-    console.log("***alterarUsuario() FIM");
-  }
-
+ 
   forms() {
     console.log("***forms() Inicio");
     this.form = this.formBuilder.group({
@@ -105,15 +77,7 @@ export class AlterarPage implements OnInit {
     console.log(usu);
     this.compsalService.detalharUsuario(this.idUsuario).subscribe((result: any) => {
       this.usuario = result;
-
-      console.log(this.form.value);
-      console.log("666" + this.usuario.nome);
-      console.log(this.form.setValue(this.usuario));
-      console.log(this.form.value);
-
-      //console.log(result);
-      console.log(this.usuario);
-      console.log("!!!!!!!!!!");
+      this.form.setValue(this.usuario);
     });
     console.log("antes usu");
     console.log(usu);

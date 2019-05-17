@@ -24,7 +24,7 @@
     <ion-item>
       <ion-label position="floating">Gênero:</ion-label>
       <ion-select clearInput formControlName="genero" [interfaceOptions]="customPopoverOptions" interface="popover"
-      [disabled]="true" clearInput>
+        [disabled]="true" clearInput>
         <ion-select-option value="M">Masculino</ion-select-option>
         <ion-select-option value="F">Feminino</ion-select-option>
       </ion-select>
@@ -241,13 +241,11 @@
         formControlName="jogadorReserva5" interface="action-sheet" clearInput [disabled]=true>
       </ion-select>
     </ion-item>
-
   </form>
-
 </ion-content>
 <ion-toolbar>
-  <ion-button (click)="criarTime()" type="submit" expand="full" [disabled]="!formTime.valid" fill="outline"
-    shape="round">Cadastrar
+  <ion-button (click)="alterarTime()" type="submit" expand="full" [disabled]="!formTime.valid" fill="outline"
+    shape="round">Alterar
   </ion-button>
 
   <ion-item>{{formTime.value | json}}</ion-item>
