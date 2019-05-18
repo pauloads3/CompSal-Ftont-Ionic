@@ -163,16 +163,55 @@ export class AlterarPage implements OnInit {
   }
 
   alterarTime() {
-
-    console.log('***alterarTime() Inicio');
     console.log(this.formTime.value);
-    this.compsalService.alterarTime(this.formTime.value);
-    //this.forms();
-    this.router.navigate(['/times']);
-    this.Alerta('Usuário alterado com sucesso!');
+    let mensagens = "";
+    let pessoas: Array<number> = new Array<number>();
+    pessoas[0] = this.formTime.value.goleiro;
+    pessoas[1] = this.formTime.value.fixo;
+    pessoas[2] = this.formTime.value.alaDireita;
+    pessoas[3] = this.formTime.value.alaEsquerda;
+    pessoas[4] = this.formTime.value.pivo;
+    pessoas[5] = this.formTime.value.treinador;
+    pessoas[6] = this.formTime.value.massagista;
+    pessoas[7] = this.formTime.value.jogadorReserva1;
+    pessoas[8] = this.formTime.value.jogadorReserva2;
+    pessoas[9] = this.formTime.value.jogadorReserva3;
+    pessoas[10] = this.formTime.value.jogadorReserva4;
+    pessoas[11] = this.formTime.value.jogadorReserva5;
 
-    console.log('***alterarTime() FIM');
+
+    let pessoaOk: Boolean;
+    pessoaOk = true;
+    for (let i = 0; i < 12 && pessoaOk; i++) {
+      for (let j = 0; j < 12; j++) {
+        if (i != j) {
+          if (pessoas[i] == pessoas[j] && pessoas[i] != null) {
+            console.log("Pessoa duplicada. i=" + i + "-Id=" + pessoas[i] + ", j=" + j + "-Id=" + pessoas[j]);
+            pessoaOk = false;
+            mensagens += pessoas[i];
+            break;
+          }
+        }
+      }
+    }
+    if (!pessoaOk) {
+      this.compsalService.detalharUsuario(mensagens).subscribe((result: any) => {
+        console.log(result);
+        this.Alerta("Existe usuários repitidos!!!<br><br>" 
+        + "ID: " + result.id 
+        + "<br>CPF: " + result.cpf
+        + "<br>Nome : " + result.nome);
+      });
+    } else {
+      console.log(this.formTime.value);
+      this.compsalService.alterarTime(this.formTime.value);      
+    }
   }
+
+
+
+
+
 
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({

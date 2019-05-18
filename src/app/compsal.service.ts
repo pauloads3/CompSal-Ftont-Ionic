@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { CadastrarUsuarioPage } from './cadastrar-usuario/cadastrar-usuario.page';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CompsalService {
   private URL = 'http://localhost:8080/';
   public items: any;
 
-  constructor(public http: HttpClient, private alertController: AlertController) { this.getArbritos(); }
+  constructor(public http: HttpClient, private alertController: AlertController, private router: Router) { this.getArbritos(); }
 
   getArbritos() {
     let data: any;
@@ -120,6 +121,7 @@ export class CompsalService {
           console.log(result);
           if (result.id != null) {
             this.Alerta("Time cadastrado com sucesso! <br><br>" + "Id: " + result.id + "<br>Nome: " + result.nome);
+            this.router.navigate(['/times']);
           }
           resolve(result.data);
         },
@@ -133,7 +135,6 @@ export class CompsalService {
     });
 
   }
-
 
   alterarUsuario(usuario: any) {
     console.log(usuario);
@@ -175,6 +176,7 @@ export class CompsalService {
           console.log(result);
           if (result.id != null) {
             this.Alerta("Time alterado com sucesso! <br><br>" + "Id: " + result.id + "<br>Nome: " + result.nome);
+            this.router.navigate(['/times']);
           }
           resolve(result.data);
         },
@@ -209,14 +211,41 @@ export class CompsalService {
       };
       console.log(data);
       this.http.post(this.URL + 'usuarios/deleteUsuario', id)
-        .subscribe((result: any) => {
-
-          resolve(result.json());
+        .subscribe((result: any) => {         
+          this.Alerta(result);
           console.log(result);
+          resolve(result.json());
         },
           (error) => {
             console.log(error.error); // error message as string
+           // this.Alerta(error.error.text);
+            if(error.error.text == "OK"){
+              this.Alerta("Usuário excluído com sucesso!!!");
+            }
             reject(error)
+          })
+    });
+  }
+
+  excluirTime(id: number) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        id: id
+      };
+      console.log(data);
+      this.http.post(this.URL + 'times/deleteTime', id)
+        .subscribe((result: any) => {
+          this.router.navigate(['/times']);          
+          if (result == null) {
+            this.Alerta("Time excluído com sucesso!!!");                                 
+          } else {
+            this.Alerta("Erro ao tentar excluir o Time!!!");            
+          }
+          
+        },
+          (error) => {
+            this.Alerta(error.error.text); // error message as string
+            //reject(error)
           })
     });
   }

@@ -4,6 +4,7 @@ import { CompsalService } from 'src/app/compsal.service';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from 'src/app/categorias/categorias.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar',
@@ -22,6 +23,7 @@ export class CadastrarPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private compsalService: CompsalService,
+    private router: Router,
     private alertController: AlertController,
     public http: HttpClient
   ) {
@@ -65,15 +67,23 @@ export class CadastrarPage implements OnInit {
       }
     }
     if (!pessoaOk) {
-      this.Alerta("Existe usuários repitidos!!!<br><br>" + "ID do usuário: " + mensagens);
+      this.compsalService.detalharUsuario(mensagens).subscribe((result: any) => {
+        console.log(result);
+        this.Alerta("Existe usuários repitidos!!!<br><br>" 
+        + "ID: " + result.id 
+        + "<br>CPF: " + result.cpf
+        + "<br>Nome : " + result.nome);
+      });      
     } else {
       console.log(this.formTime.value);
       this.compsalService.cadastarTime(this.formTime.value);
     }
   }
+
+  
   forms() {
     this.formTime = this.formBuilder.group({
-      id:null,     
+      id: null,
       nome: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       genero: [null, [Validators.required]],
       goleiro: [null, [Validators.required]],
@@ -93,7 +103,7 @@ export class CadastrarPage implements OnInit {
 
 
   getResults(keyword: string) {
-    return "Teste";
+
   }
 
   carregarDados() {
@@ -122,7 +132,7 @@ export class CadastrarPage implements OnInit {
       }
     );
   }
-  
+
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',

@@ -75,8 +75,7 @@ export class UsuariosPage implements OnInit {
           handler: () => {
             this.compsalService.excluirUsuario(id);
             console.log("*** excluirUsuario() --> this.ionViewWillEnter()  2");
-            this.ionViewWillEnter();
-            this.Alerta("Usuário excluído com sucesso!!!");
+            this.ionViewWillEnter();            
             this.carregarDados();
           }
         }
