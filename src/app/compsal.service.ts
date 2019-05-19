@@ -135,6 +135,25 @@ export class CompsalService {
     });
 
   }
+  cadastarTimeOk(time: any) {    
+    return new Promise((resolve, reject) => {
+      var data = time;      
+      this.http.post(this.URL + 'times/createTimeOk', data)
+        .subscribe((result: any) => {
+          console.log(result);          
+          resolve(result.data);
+        },
+          (error) => {
+            console.log(error.error.text);   
+            if (error.error.text != "OK") {
+              this.Alerta(error.error.text);
+            }
+            if (error.error.text == "OK") {
+              this.cadastarTime(time);                         
+            }    
+          })
+    });
+  }
 
   alterarUsuario(usuario: any) {
     console.log(usuario);
@@ -211,15 +230,17 @@ export class CompsalService {
       };
       console.log(data);
       this.http.post(this.URL + 'usuarios/deleteUsuario', id)
-        .subscribe((result: any) => {         
+        .subscribe((result: any) => {
           this.Alerta(result);
           console.log(result);
           resolve(result.json());
         },
           (error) => {
             console.log(error.error); // error message as string
-           // this.Alerta(error.error.text);
-            if(error.error.text == "OK"){
+            if (error.error.text != "OK") {
+              this.Alerta(error.error.text);
+            }
+            if (error.error.text == "OK") {
               this.Alerta("Usuário excluído com sucesso!!!");
             }
             reject(error)
@@ -235,13 +256,13 @@ export class CompsalService {
       console.log(data);
       this.http.post(this.URL + 'times/deleteTime', id)
         .subscribe((result: any) => {
-          this.router.navigate(['/times']);          
+          this.router.navigate(['/times']);
           if (result == null) {
-            this.Alerta("Time excluído com sucesso!!!");                                 
+            this.Alerta("Time excluído com sucesso!!!");
           } else {
-            this.Alerta("Erro ao tentar excluir o Time!!!");            
+            this.Alerta("Erro ao tentar excluir o Time!!!");
           }
-          
+
         },
           (error) => {
             this.Alerta(error.error.text); // error message as string
