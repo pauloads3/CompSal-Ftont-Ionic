@@ -216,6 +216,27 @@ export class CompsalService {
 
   }
 
+  alterarTimeOk(time: any) {
+    return new Promise((resolve, reject) => {
+      var data = time;      
+      this.http.post(this.URL + 'times/updateTimeOk', data)
+        .subscribe((result: any) => {
+          console.log(result);          
+          resolve(result.data);
+        },
+          (error) => {
+            console.log(error.error.text); 
+            console.log(error); 
+            console.log(error.error);     
+            if (error.error.text != "OK") {
+              this.Alerta(error.error.text);
+            }
+            if (error.error.text == "OK") {
+              this.alterarTime(time);                         
+            }    
+          })
+    }); }
+
   detalharUsuario(id: string) {
     return this.http.get(this.URL + 'usuarios/' + id);
   }
