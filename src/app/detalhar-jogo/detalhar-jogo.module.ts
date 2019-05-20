@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AlterarPage } from './alterar.page';
-import { BrMaskerModule } from 'br-mask';
+import { DetalharJogoPage } from './detalhar-jogo.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AlterarPage
+    component: DetalharJogoPage
   }
 ];
 
@@ -21,9 +20,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    BrMaskerModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [AlterarPage]
+  declarations: [DetalharJogoPage]
 })
-export class AlterarPageModule {}
+export class DetalharJogoPageModule {}

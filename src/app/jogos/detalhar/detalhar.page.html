@@ -9,4 +9,40 @@
 
 <ion-content color="light">
 
+  <ion-item>
+    <ion-label>ID: {{jogo.id}}</ion-label>
+  </ion-item>
+  
+  <ion-item *ngIf="jogo.genero == 'F'">
+    <ion-label>Gênero: Feminino</ion-label>
+  </ion-item>
+  <ion-item *ngIf="jogo.genero == 'M'">
+    <ion-label>Gênero: Masculino</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time A: {{jogo.timeA}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time B: {{jogo.timeB}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Árbitro Principal: {{arbitroPrincipal.nome + ' ( ' + arbitroPrincipal.cpf + ' / ' + arbitroPrincipal.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Árbitro Auxiliar: {{arbitroAuxiliar.nome + ' ( ' + arbitroAuxiliar.cpf + ' / ' + arbitroAuxiliar.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Anotador: {{anotador.nome + ' ( ' + anotador.cpf + ' / ' + anotador.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Data: {{jogo.dataJogo}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Horário: {{jogo.horario}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Local: {{jogo.localJogo}}</ion-label>
+  </ion-item>
+ 
+
 </ion-content>

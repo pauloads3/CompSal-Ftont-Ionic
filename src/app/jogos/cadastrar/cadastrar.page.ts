@@ -16,9 +16,6 @@ export class CadastrarPage implements OnInit {
   lista_usuariosF = new Array<any>();
   lista_timesM = new Array<any>();
   lista_timesF = new Array<any>();
-  usuariosTimeA: any;
-  usuariosTimeB: any;
-  time: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,27 +44,18 @@ export class CadastrarPage implements OnInit {
       localJogo: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
   }
-  
-  criarJogo() {
 
-    this.compsalService.detalharTime(this.formJogo.value.timeA).subscribe((result: any) => {
-      this.time = result;
-      console.log(this.usuariosTimeA);
-    });
+  criarJogo() {
     let mensagens = "";
     let pessoas: Array<number> = new Array<number>();
-    console.log(this.time);
-    console.log(this.usuariosTimeB);
-
     pessoas[0] = this.formJogo.value.arbitroPrincipal;
     pessoas[1] = this.formJogo.value.arbitroAuxiliar;
     pessoas[2] = this.formJogo.value.anotador;
 
     let pessoaOk: Boolean;
     pessoaOk = true;
-    for (let i = 0; i < 14 && pessoaOk; i++) {
-      for (let j = 0; j < 14; j++) {
-        console.log("i=" + i + "-Id=" + pessoas[i] + ", j=" + j + "-Id=" + pessoas[j]);
+    for (let i = 0; i < 3 && pessoaOk; i++) {
+      for (let j = 0; j < 3; j++) {
         if (i != j) {
           if (pessoas[i] == pessoas[j] && pessoas[i] != null) {
             console.log("Pessoa duplicada. i=" + i + "-Id=" + pessoas[i] + ", j=" + j + "-Id=" + pessoas[j]);
@@ -78,7 +66,6 @@ export class CadastrarPage implements OnInit {
         }
       }
     }
-
     if (this.formJogo.value.timeA == this.formJogo.value.timeB) {
       this.Alerta("Os Times estão repitidos!!!");
     } else if (!pessoaOk) {
@@ -89,12 +76,18 @@ export class CadastrarPage implements OnInit {
           + "<br>CPF: " + result.cpf
           + "<br>Nome : " + result.nome);
       });
+    } else if (!this.validaData(this.formJogo.value.dataJogo)) {
+      this.Alerta("Data Invalida!!!!! ");
     } else {
       console.log(this.formJogo.value);
-      this.Alerta("OK!!!");
-      //this.compsalService.cadastarTimeOk(this.formJogo.value);
+     // this.Alerta("OK!!!");
+      this.compsalService.cadastarJogo(this.formJogo.value);
+      this.router.navigate(['/jogos']);
     }
   }
+
+
+
 
   carregarDados() {
     this.compsalService.getUsuariosMasculino().subscribe(
@@ -147,7 +140,6 @@ export class CadastrarPage implements OnInit {
       }
     );
   }
-
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
@@ -157,7 +149,6 @@ export class CadastrarPage implements OnInit {
 
     await alert.present();
   }
-
   validaData(valor) {
     var erro: any;
     var date = valor;
@@ -184,3 +175,5 @@ export class CadastrarPage implements OnInit {
   }
 
 }
+
+

@@ -15,8 +15,8 @@
     <ion-item>
       <ion-label position="floating">Gênero:</ion-label>
       <ion-select clearInput formControlName="genero" [interfaceOptions]="customPopoverOptions" interface="popover"
-        [disabled]="formJogo.value.goleiro != null 
-            || formJogo.value.fixo != null
+        [disabled]="formJogo.value.timeA != null 
+            || formJogo.value.timeB != null
             || formJogo.value.arbitroPrincipal != null
             || formJogo.value.arbitroAuxiliar != null
             || formJogo.value.anotador != null" clearInput>
@@ -28,12 +28,12 @@
       <ion-label position="floating">Time A</ion-label>
 
       <ion-select *ngIf="formJogo.value.genero == 'F'" formControlName="timeA" interface="action-sheet" clearInput>
-        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.id}}>
+        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.nome}}>
           {{sumulas.nome}}
         </ion-select-option>
       </ion-select>
       <ion-select *ngIf="formJogo.value.genero == 'M'" formControlName="timeA" interface="action-sheet" clearInput>
-        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.id}}>
+        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.nome}}>
           {{sumulas.nome}}
         </ion-select-option>
       </ion-select>
@@ -46,13 +46,13 @@
       <ion-label position="floating">Time B</ion-label>
       <ion-select *ngIf="formJogo.value.genero == 'F'" [compareWith]="compareWith" formControlName="timeB"
         interface="action-sheet" clearInput>
-        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.id}}>
+        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.nome}}>
           {{sumulas.nome}}
         </ion-select-option>
       </ion-select>
       <ion-select *ngIf="formJogo.value.genero == 'M'" [compareWith]="compareWith" formControlName="timeB"
         interface="action-sheet" clearInput>
-        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.id}}>
+        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.nome}}>
           {{sumulas.nome}}
         </ion-select-option>
       </ion-select>
@@ -137,5 +137,5 @@
     shape="round">Cadastrar
   </ion-button>
 
-  <ion-item>{{formJogo.value | json}}</ion-item>
+  <ion-item>{{formJogo.value | json}}</ion-item>  
 </ion-toolbar>

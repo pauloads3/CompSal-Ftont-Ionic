@@ -9,6 +9,78 @@
 
 <ion-content color="light">
 
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row >
+          <ion-col size="1">
+            <div>
+              Id
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              Time A
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              Time B
+            </div>
+          </ion-col>
+          <ion-col size="1">
+            <div>
+              Data
+            </div>
+          </ion-col>
+          <ion-col size="1">
+            <div>
+              Gênero
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item *ngFor="let jogo of lista_jogos; let i = index">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <div>
+              {{jogo.id}}
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              {{jogo.timeA}}
+            </div>
+          </ion-col>
+          <ion-col size="1">
+            <div>
+              X
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <div>
+              {{jogo.timeB}}
+            </div>
+          </ion-col>
+          <ion-col size="2">
+            <div>
+              {{jogo.dataJogo}}
+            </div>
+          </ion-col>
+          <ion-col size="1">
+            <div>
+              {{jogo.genero}}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button  (click)="detalharJogo(jogo.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
+      <ion-button (click)="alterarJogo(jogo.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
+      <ion-button (click)="excluirJogo(jogo.id, jogo.timeA, jogo.timeB)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
+    </ion-item>
+  </ion-list>
 
 
 

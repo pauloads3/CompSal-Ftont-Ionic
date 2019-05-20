@@ -9,5 +9,133 @@
 </ion-header>
 
 <ion-content color="light">
+  <form [formGroup]="formJogo">
+
+    <ion-item>
+      <ion-label position="floating">Gênero:</ion-label>
+      <ion-select clearInput formControlName="genero" [interfaceOptions]="customPopoverOptions" interface="popover"
+        [disabled]="formJogo.value.timeA != null 
+            || formJogo.value.timeB != null
+            || formJogo.value.arbitroPrincipal != null
+            || formJogo.value.arbitroAuxiliar != null
+            || formJogo.value.anotador != null" clearInput>
+        <ion-select-option value="M">Masculino</ion-select-option>
+        <ion-select-option value="F">Feminino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Time A</ion-label>
+
+      <ion-select *ngIf="formJogo.value.genero == 'F'" formControlName="timeA" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.nome}}>
+          {{sumulas.nome}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == 'M'" formControlName="timeA" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.nome}}>
+          {{sumulas.nome}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == null" formControlName="timeA" interface="action-sheet" clearInput
+        [disabled]=true>
+      </ion-select>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Time B</ion-label>
+      <ion-select *ngIf="formJogo.value.genero == 'F'" [compareWith]="compareWith" formControlName="timeB"
+        interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_timesF" value={{sumulas.nome}}>
+          {{sumulas.nome}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == 'M'" [compareWith]="compareWith" formControlName="timeB"
+        interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_timesM" value={{sumulas.nome}}>
+          {{sumulas.nome}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == null" [compareWith]="compareWith" formControlName="timeB"
+        interface="action-sheet" clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Árbitro Principal</ion-label>
+      <ion-select *ngIf="formJogo.value.genero == 'F'" formControlName="arbitroPrincipal" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == 'M'" formControlName="arbitroPrincipal" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == null" formControlName="arbitroPrincipal" interface="action-sheet"
+        clearInput [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Árbitro Auxiliar</ion-label>
+      <ion-select *ngIf="formJogo.value.genero == 'F'" formControlName="arbitroAuxiliar" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == 'M'" formControlName="arbitroAuxiliar" interface="action-sheet"
+        clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == null" formControlName="arbitroAuxiliar" interface="action-sheet"
+        clearInput [disabled]=true>
+      </ion-select>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Anotador</ion-label>
+      <ion-select *ngIf="formJogo.value.genero == 'F'" formControlName="anotador" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosF" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == 'M'" formControlName="anotador" interface="action-sheet" clearInput>
+        <ion-select-option *ngFor="let sumulas of lista_usuariosM" value={{sumulas.id}}>
+          {{sumulas.nome + ' ( ' + sumulas.cpf + ' / ' + sumulas.id +' )'}}
+        </ion-select-option>
+      </ion-select>
+      <ion-select *ngIf="formJogo.value.genero == null" formControlName="anotador" interface="action-sheet" clearInput
+        [disabled]=true>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Data</ion-label>
+      <ion-input formControlName="dataJogo" clearInput maxLength="10"
+        [brmasker]="{form: formJogo.get('dataJogo'), mask:'00/00/0000', len:10, type:'num'}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Horário</ion-label>
+      <ion-input formControlName="horario" clearInput maxLength="5"
+        [brmasker]="{form: formJogo.get('horario'), mask:'00:00', len:5, type:'num'}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Local</ion-label>
+      <ion-input formControlName="localJogo" maxLength="100" clearInput> </ion-input>
+    </ion-item>
+
+  </form>
 
 </ion-content>
+<ion-toolbar>
+  <ion-button (click)="alterarJogo()" type="submit" expand="full"  fill="outline"
+    shape="round">Alterar
+  </ion-button>
+
+  <ion-item>{{formJogo.value | json}}</ion-item>  
+
+

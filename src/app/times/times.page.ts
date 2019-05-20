@@ -89,7 +89,7 @@ export class TimesPage implements OnInit {
           handler: () => {
             this.compsalService.excluirTime(id);
             console.log("*** excluirTime() --> this.ionViewWillEnter()  2");
-            this.router.navigateByUrl('localhost:8100/times');
+            this.router.navigate(['/times']);
             console.log("*** excluirTime() --> this.ionViewWillEnter()  3");
           }
         }

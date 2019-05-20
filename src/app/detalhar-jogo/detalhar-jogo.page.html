@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>detalharJogo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>ID: {{time.id}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nome: {{time.nome}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="time.genero == 'F'">
+      <ion-label>Gênero: Feminino</ion-label>
+    </ion-item>
+  <ion-item *ngIf="time.genero == 'M'">
+    <ion-label>Gênero: Masculino</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Goleiro: {{goleiro.nome + ' ( ' + goleiro.cpf + ' / ' + goleiro.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fixo: {{fixo.nome + ' ( ' + fixo.cpf + ' / ' + fixo.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Ala Direita: {{alaDireita.nome + ' ( ' + alaDireita.cpf + ' / ' + alaDireita.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Ala Esquerda: {{alaEsquerda.nome + ' ( ' + alaEsquerda.cpf + ' / ' + alaEsquerda.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pivo: {{pivo.nome + ' ( ' + pivo.cpf + ' / ' + pivo.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Treinador: {{treinador.nome + ' ( ' + treinador.cpf + ' / ' + treinador.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Massagista: {{massagista.nome + ' ( ' + massagista.cpf + ' / ' + massagista.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jogador Reserva 1: {{jogadorReserva1.nome + ' ( ' + jogadorReserva1.cpf + ' / ' + jogadorReserva1.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jogador Reserva 2: {{jogadorReserva2.nome + ' ( ' + jogadorReserva2.cpf + ' / ' + jogadorReserva2.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jogador Reserva 3: {{jogadorReserva3.nome + ' ( ' + jogadorReserva3.cpf + ' / ' + jogadorReserva3.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jogador Reserva 4: {{jogadorReserva4.nome + ' ( ' + jogadorReserva4.cpf + ' / ' + jogadorReserva4.id +' )'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jogador Reserva 5: {{jogadorReserva5.nome + ' ( ' + jogadorReserva5.cpf + ' / ' + jogadorReserva5.id +' )'}}</ion-label>
+  </ion-item>
+</ion-content>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class CompsalService {
 
   cadastrarUsuario: CadastrarUsuarioPage;
-
+  usuario: any;
   private URL = 'http://localhost:8080/';
   public items: any;
 
@@ -27,6 +27,9 @@ export class CompsalService {
   }
   getTimes() {
     return this.http.get(this.URL + 'times');
+  }
+  getJogos() {
+    return this.http.get(this.URL + 'jogos');
   }
   getUsuariosMasculino() {
     return this.http.get(this.URL + 'usuarios/findAllM');
@@ -141,24 +144,50 @@ export class CompsalService {
     });
 
   }
-  cadastarTimeOk(time: any) {    
+  cadastarTimeOk(time: any) {
     return new Promise((resolve, reject) => {
-      var data = time;      
+      var data = time;
       this.http.post(this.URL + 'times/createTimeOk', data)
         .subscribe((result: any) => {
-          console.log(result);          
+          console.log(result);
           resolve(result.data);
         },
           (error) => {
-            console.log(error.error.text);   
+            console.log(error.error.text);
             if (error.error.text != "OK") {
               this.Alerta(error.error.text);
             }
             if (error.error.text == "OK") {
-              this.cadastarTime(time);                         
-            }    
+              this.cadastarTime(time);
+            }
           })
     });
+  }
+
+  cadastarJogo(jogo: any) {
+    console.log(jogo);
+    return new Promise((resolve, reject) => {
+      var data = jogo;
+      let mensagens = "";
+      this.http.post(this.URL + 'jogos/createJogo', data)
+        .subscribe((result: any) => {
+          console.log(result);
+          if (result.id != null) {
+            this.Alerta("Jogo cadastrado com sucesso! <br><br>" + "Id: " + result.id 
+            + "<br>Time A: " + result.timeA + "<br>Time B: " + result.timeB);
+            this.router.navigate(['/jogos']);
+          }
+          resolve(result.data);
+        },
+          (error) => {
+            if (error.name == "HttpErrorResponse" && error.statusText != "OK") {
+              this.Alerta("Verifique sua conexão! <br><br>" + error.statusText + "<br>" + error.url);
+            } else {
+              this.Alerta(error.message);
+            }
+          })
+    });
+
   }
 
   alterarUsuario(usuario: any) {
@@ -222,32 +251,83 @@ export class CompsalService {
 
   }
 
-  alterarTimeOk(time: any) {
+  alterarJogo(jogo: any) {
+    console.log(jogo);
     return new Promise((resolve, reject) => {
-      var data = time;      
-      this.http.post(this.URL + 'times/updateTimeOk', data)
+      var data = jogo;
+      let mensagens = "";
+      this.http.post(this.URL + 'jogos/updateJogo', data)
         .subscribe((result: any) => {
-          console.log(result);          
+          console.log(result);
+          if (result.id != null) {
+            this.Alerta("Jogo alterado com sucesso! <br><br>" + "Id: " + result.id 
+            + "<br>Time A: " + result.timeA + "<br>Time B: " + result.timeB);
+            this.router.navigate(['/jogos']);
+          }
           resolve(result.data);
         },
           (error) => {
-            console.log(error.error.text); 
-            console.log(error); 
-            console.log(error.error);     
+            if (error.name == "HttpErrorResponse" && error.statusText != "OK") {
+              this.Alerta("Verifique sua conexão! <br><br>" + error.statusText + "<br>" + error.url);
+            } else if (error.error.errors.length > 0) {
+              for (let index = 0; index < error.error.errors.length; index++) {
+                mensagens += "-" + error.error.errors[index].defaultMessage + "<br><br>";
+                //this.Alerta(error.error.errors[index].defaultMessage);  //para exibir uma a uma...
+              }
+              this.Alerta(mensagens);
+            } else {
+              this.Alerta(error.message);
+            }
+          })
+    });
+
+  }
+
+
+  alterarTimeOk(time: any) {
+    return new Promise((resolve, reject) => {
+      var data = time;
+      this.http.post(this.URL + 'times/updateTimeOk', data)
+        .subscribe((result: any) => {
+          console.log(result);
+          resolve(result.data);
+        },
+          (error) => {
+            console.log(error.error.text);
+            console.log(error);
+            console.log(error.error);
             if (error.error.text != "OK") {
               this.Alerta(error.error.text);
             }
             if (error.error.text == "OK") {
-              this.alterarTime(time);                         
-            }    
+              this.alterarTime(time);
+            }
           })
-    }); }
+    });
+  }
 
   detalharUsuario(id: string) {
     return this.http.get(this.URL + 'usuarios/' + id);
   }
   detalharTime(id: string) {
     return this.http.get(this.URL + 'times/' + id);
+  }
+  detalharJogo(id: string) {
+    return this.http.get(this.URL + 'jogos/' + id);
+  }
+
+  pegarTime(id: string) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.URL + 'times/' + id)
+        .subscribe((result: any) => {
+          this.usuario = result;
+          console.log(result);
+          console.log(this.usuario);
+          resolve(result.data);
+          console.log(result.data);
+        })
+    });
+
   }
 
   excluirUsuario(id: number) {
@@ -297,4 +377,27 @@ export class CompsalService {
           })
     });
   }
+  excluirJogo(id: number) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        id: id
+      };
+      console.log(data);
+      this.http.post(this.URL + 'jogos/deleteJogo', id)
+        .subscribe((result: any) => {
+          this.router.navigate(['/jogos']);
+          if (result == null) {
+            this.Alerta("Jogo excluído com sucesso!!!");
+          } else {
+            this.Alerta("Erro ao tentar excluir o Jogo!!!");
+          }
+
+        },
+          (error) => {
+            this.Alerta(error.error.text); // error message as string
+            //reject(error)
+          })
+    });
+  }
+
 }
