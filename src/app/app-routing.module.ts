@@ -27,7 +27,11 @@ const routes: Routes = [
   { path: 'times', loadChildren: './times/times.module#TimesPageModule' },
   { path: 'times/alterar/:id', loadChildren: './times/alterar/alterar.module#AlterarPageModule' },
   { path: 'times/detalhar/:id', loadChildren: './times/detalhar/detalhar.module#DetalharPageModule' },
-  { path: 'times/cadastrar', loadChildren: './times/cadastrar/cadastrar.module#CadastrarPageModule' }
+  { path: 'times/cadastrar', loadChildren: './times/cadastrar/cadastrar.module#CadastrarPageModule' },
+  { path: 'jogos', loadChildren: './jogos/jogos.module#JogosPageModule' },
+  { path: 'jogos/alterar/:id', loadChildren: './jogos/alterar/alterar.module#AlterarPageModule' },
+  { path: 'jogos/cadastrar', loadChildren: './jogos/cadastrar/cadastrar.module#CadastrarPageModule' },
+  { path: 'jogos/detalhar/:id', loadChildren: './jogos/detalhar/detalhar.module#DetalharPageModule' }
  
 ];
 

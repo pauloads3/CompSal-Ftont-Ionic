@@ -34,6 +34,12 @@ export class CompsalService {
   getUsuariosFeminino() {
     return this.http.get(this.URL + 'usuarios/findAllF');
   }
+  getTimesMasculino() {
+    return this.http.get(this.URL + 'times/findAllM');
+  }
+  getTimesFeminino() {
+    return this.http.get(this.URL + 'times/findAllF');
+  }
 
   createArbitro(descricao: string) {
     return new Promise((resolve, reject) => {

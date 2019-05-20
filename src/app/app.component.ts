@@ -41,6 +41,11 @@ export class AppComponent {
       icon: 'happy'
     },
     {
+      title: 'Jogos',
+      url: '/jogos',
+      icon: 'football'
+    },
+    {
       title: 'Categorias',
       url: '/categorias',
       icon: 'body'
