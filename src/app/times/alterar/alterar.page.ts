@@ -204,7 +204,8 @@ export class AlterarPage implements OnInit {
       });
     } else {
       console.log(this.formTime.value);
-      this.compsalService.alterarTimeOk(this.formTime.value);      
+      this.compsalService.alterarTimeOk(this.formTime.value);
+            
     }
   }
 

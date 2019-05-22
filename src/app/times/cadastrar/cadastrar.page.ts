@@ -76,7 +76,7 @@ export class CadastrarPage implements OnInit {
       });      
     } else {
       console.log(this.formTime.value);
-      this.compsalService.cadastarTimeOk(this.formTime.value);
+      this.compsalService.cadastarTimeOk(this.formTime.value);      
     }
   }
 

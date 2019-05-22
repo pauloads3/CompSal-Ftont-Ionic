@@ -13,17 +13,17 @@
     <ion-item>
       <ion-grid>
         <ion-row >
-          <ion-col size="1">
+          <ion-col size="2">
             <div>
               Id
             </div>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="1">
             <div>
               Time A
             </div>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
             <div>
               Time B
             </div>
@@ -49,7 +49,7 @@
               {{jogo.id}}
             </div>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
             <div>
               {{jogo.timeA}}
             </div>
@@ -76,7 +76,8 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button  (click)="detalharJogo(jogo.id)" slot="end" shape="round" fill="outline">Detalhar</ion-button>
+      <ion-button  (click)="detalharJogo(jogo.id)" (click)="refreshPage()" slot="end" shape="round" fill="outline">Sumulas</ion-button>
+      <ion-button  (click)="detalharJogo(jogo.id)" (click)="refreshPage()" slot="end" shape="round" fill="outline">Detalhar</ion-button>
       <ion-button (click)="alterarJogo(jogo.id)"slot="end" shape="round" fill="outline" color="warning">Alterar</ion-button>
       <ion-button (click)="excluirJogo(jogo.id, jogo.timeA, jogo.timeB)" slot="end" shape="round" fill="outline" color="danger">Deletar</ion-button>
     </ion-item>
@@ -89,5 +90,4 @@
       <ion-icon name="add-circle"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { CadastrarUsuarioPage } from './cadastrar-usuario/cadastrar-usuario.page';
 import { Router } from '@angular/router';
+import { JogosPage } from './jogos/jogos.page';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CompsalService {
   private URL = 'http://localhost:8080/';
   public items: any;
 
-  constructor(public http: HttpClient, private alertController: AlertController, private router: Router) { this.getArbritos(); }
+  constructor(public http: HttpClient, private alertController: AlertController, private router: Router ) { this.getArbritos(); }
 
   getArbritos() {
     let data: any;
@@ -159,6 +160,7 @@ export class CompsalService {
             }
             if (error.error.text == "OK") {
               this.cadastarTime(time);
+              
             }
           })
     });
@@ -301,6 +303,7 @@ export class CompsalService {
             }
             if (error.error.text == "OK") {
               this.alterarTime(time);
+              this.router.navigate(['/times']);
             }
           })
     });
@@ -363,17 +366,23 @@ export class CompsalService {
       console.log(data);
       this.http.post(this.URL + 'times/deleteTime', id)
         .subscribe((result: any) => {
-          this.router.navigate(['/times']);
+          
           if (result == null) {
             this.Alerta("Time excluído com sucesso!!!");
+            this.router.navigate(['/times']);
           } else {
             this.Alerta("Erro ao tentar excluir o Time!!!");
           }
 
         },
           (error) => {
-            this.Alerta(error.error.text); // error message as string
-            //reject(error)
+            console.log(error.error); // error message as string
+            if (error.error.text != "OK") {
+              this.Alerta(error.error.text);
+            }
+            if (error.error.text == "OK") {
+              this.Alerta("Usuário excluído com sucesso!!!");
+            }
           })
     });
   }
@@ -385,9 +394,10 @@ export class CompsalService {
       console.log(data);
       this.http.post(this.URL + 'jogos/deleteJogo', id)
         .subscribe((result: any) => {
-          this.router.navigate(['/jogos']);
+          
           if (result == null) {
             this.Alerta("Jogo excluído com sucesso!!!");
+            this.router.navigate(['/jogos']);
           } else {
             this.Alerta("Erro ao tentar excluir o Jogo!!!");
           }

@@ -133,9 +133,9 @@
 
 </ion-content>
 <ion-toolbar>
-  <ion-button (click)="criarJogo()" type="submit" expand="full"  fill="outline"
+   
+  <ion-button (click)="criarJogo()" type="submit" expand="full" [disabled]="!formJogo.valid"  fill="outline"
     shape="round">Cadastrar
   </ion-button>
-
-  <ion-item>{{formJogo.value | json}}</ion-item>  
+  
 </ion-toolbar>

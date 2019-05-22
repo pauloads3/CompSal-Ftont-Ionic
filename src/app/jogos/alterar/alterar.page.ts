@@ -87,7 +87,7 @@ export class AlterarPage implements OnInit {
       console.log(this.formJogo.value);
       //this.Alerta("OK!!!");
       this.compsalService.alterarJogo(this.formJogo.value);
-      this.router.navigate(['/jogos']);
+      //this.router.navigate(['/jogos']);
     }
   }
 

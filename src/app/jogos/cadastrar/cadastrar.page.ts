@@ -24,11 +24,17 @@ export class CadastrarPage implements OnInit {
     private alertController: AlertController
   ) {
     this.forms();
+    this.carregarDados();
   }
 
   ngOnInit() {
     this.carregarDados();
   }
+
+  ionViewWillEnter() {
+    this.carregarDados();
+  }
+
 
   forms() {
     this.formJogo = this.formBuilder.group({
@@ -43,6 +49,24 @@ export class CadastrarPage implements OnInit {
       horario: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       localJogo: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
+  }
+
+  validarHora(valor) {
+    //texto = "24:52";
+    if (valor.substring(0, 2) > 23) {
+      console.log("Hora inválida!!! " + valor);
+      return false;
+    } else if (valor.substring(3, 5) > 59) {
+      console.log("Hora inválida!!! " + valor);
+      return false;
+    } else {
+      console.log("OK! " + valor);
+      console.log(valor.substring(0, 2));
+      console.log(valor.substring(3, 5));
+      return true;
+
+    }
+
   }
 
   criarJogo() {
@@ -77,12 +101,14 @@ export class CadastrarPage implements OnInit {
           + "<br>Nome : " + result.nome);
       });
     } else if (!this.validaData(this.formJogo.value.dataJogo)) {
-      this.Alerta("Data Invalida!!!!! ");
+      this.Alerta("Data Inválida!!!!! ");
+    } else if (!this.validarHora(this.formJogo.value.horario)) {
+      this.Alerta("Hora Inválida!!!!! ");
     } else {
       console.log(this.formJogo.value);
-     // this.Alerta("OK!!!");
+      // this.Alerta("OK!!!");
       this.compsalService.cadastarJogo(this.formJogo.value);
-      this.router.navigate(['/jogos']);
+      //this.router.navigate(['/jogos']);
     }
   }
 

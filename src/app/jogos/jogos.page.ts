@@ -27,7 +27,7 @@ export class JogosPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    //this.carregarDados();    
+    this.carregarDados();    
     console.log("ionViewWillEnter()");
   }
   ionViewDidEnter() {
@@ -85,16 +85,24 @@ export class JogosPage implements OnInit {
           handler: () => {
             this.compsalService.excluirJogo(id);
             console.log("*** excluirJogo() --> this.ionViewWillEnter()  2");
-            this.router.navigate(['/times']);
+            //this.router.navigate(['/jogos']);
             console.log("*** excluirJogo() --> this.ionViewWillEnter()  3");
+            this.refreshPage();
           }
         }
       ]
     });
 
+   
     await alert.present();
   }
 
+
+  refreshPage() {
+    console.log("refreshPage()");
+    this.ionViewWillEnter();
+
+}
 
   async Alerta(messagem: string) {
     const alert = await this.alertController.create({

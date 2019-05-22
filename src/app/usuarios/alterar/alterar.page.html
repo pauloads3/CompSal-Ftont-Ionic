@@ -103,10 +103,10 @@
           <ion-select-option value="EX">Exterior</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button type="submit" (click)="criarUsuario()">Cadastrar</ion-button>
+      
     </form>
   </ion-content>
   <ion-toolbar>
     <ion-button (click)="alterarUsuario()" type="submit" [disabled]="!form.valid" expand="full" fill="outline" shape="round">Alterar</ion-button>
-    <ion-item>{{form.value | json}}</ion-item>
+    
   </ion-toolbar>

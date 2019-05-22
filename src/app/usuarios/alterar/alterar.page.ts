@@ -116,7 +116,7 @@ export class AlterarPage implements OnInit {
 
     // Falta ajustar a data...
     if (this.validaData(this.form.value.dtNascimento)) {
-      this.Alerta("Data valida!! ");
+      //this.Alerta("Data valida!! ");
       this.validaData(this.form.value.dtNascimento);
       this.compsalService.alterarUsuario(this.form.value);
       //this.forms();
