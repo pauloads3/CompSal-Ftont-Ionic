@@ -64,6 +64,11 @@ export class JogosPage implements OnInit {
     this.navController.navigateForward(['/jogos/alterar', id]);
 
   }
+  sumulaJogo(id: string) {
+    this.navController.navigateForward(['/sumulas/cadastrar', id]); 
+
+  }
+
 
   async excluirJogo(id: number, timeA: string, timeB: string) {
 

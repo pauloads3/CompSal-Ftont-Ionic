@@ -38,6 +38,13 @@ export class CompsalService {
   getUsuariosFeminino() {
     return this.http.get(this.URL + 'usuarios/findAllF');
   }
+  getUsuariosMasculinoId(id: number) {
+    return this.http.get(this.URL + 'usuarios/findAllM/'+ id );
+  }
+  getUsuariosFemininoId(id: number) {
+    return this.http.get(this.URL + 'usuarios/findAllF/'+ id);
+  }
+
   getTimesMasculino() {
     return this.http.get(this.URL + 'times/findAllM');
   }
@@ -315,6 +322,13 @@ export class CompsalService {
   detalharTime(id: string) {
     return this.http.get(this.URL + 'times/' + id);
   }
+  detalharTimeNomeM(id: string) {
+    return this.http.get(this.URL + 'times/nomeM/' + id);
+  }
+  detalharTimeNomeF(id: string) {
+    return this.http.get(this.URL + 'times/nomeF/' + id);
+  }
+
   detalharJogo(id: string) {
     return this.http.get(this.URL + 'jogos/' + id);
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, MenuController } from '@ionic/angular';
 import { CompsalService } from '../compsal.service';
 import { Router } from '@angular/router';
 
@@ -19,6 +19,7 @@ export class TimesPage implements OnInit {
     private navController: NavController,
     private compsalService: CompsalService,
     private router: Router,
+    public menuCtrl: MenuController,
     private alertController: AlertController
 
   ) {
@@ -29,11 +30,13 @@ export class TimesPage implements OnInit {
   ngOnInit() {
     console.log("ngOnInit()");
     this.carregarDados();
+    this.menuCtrl.enable(true);
   }
 
   ionViewWillEnter() {
     console.log("ionViewWillEnter()");
     this.carregarDados();
+    this.menuCtrl.enable(true);
   }
 
   carregarDados() {

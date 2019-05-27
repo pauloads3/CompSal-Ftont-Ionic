@@ -32,7 +32,11 @@ const routes: Routes = [
   { path: 'jogos/alterar/:id', loadChildren: './jogos/alterar/alterar.module#AlterarPageModule' },
   { path: 'jogos/cadastrar', loadChildren: './jogos/cadastrar/cadastrar.module#CadastrarPageModule' },
   { path: 'jogos/detalhar/:id', loadChildren: './jogos/detalhar/detalhar.module#DetalharPageModule' },
-  { path: 'detalhar-jogo/:id', loadChildren: './detalhar-jogo/detalhar-jogo.module#DetalharJogoPageModule' }
+  { path: 'detalhar-jogo/:id', loadChildren: './detalhar-jogo/detalhar-jogo.module#DetalharJogoPageModule' },
+  { path: 'sumulas', loadChildren: './sumulas/sumulas.module#SumulasPageModule' },
+  { path: 'sumulas/detalhar', loadChildren: './sumulas/detalhar/detalhar.module#DetalharPageModule' },
+  { path: 'sumulas/cadastrar/:id', loadChildren: './sumulas/cadastrar/cadastrar.module#CadastrarPageModule' },
+  { path: 'sumulas/alterar', loadChildren: './sumulas/alterar/alterar.module#AlterarPageModule' }
  
 ];
 

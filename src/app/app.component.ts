@@ -27,7 +27,7 @@ export class AppComponent {
     },
     {
       title: 'Sumulas',
-      url: '/Sumulas',
+      url: '/sumulas',
       icon: 'clipboard'
     },
     {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompsalService } from 'src/app/compsal.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -23,6 +23,7 @@ export class AlterarPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private compsalService: CompsalService,
+    public menuCtrl: MenuController,
     private alertController: AlertController
   ) {
     this.forms();
@@ -31,6 +32,7 @@ export class AlterarPage implements OnInit {
   }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
     this.pegarUsuario();
   }
 
@@ -98,7 +100,8 @@ export class AlterarPage implements OnInit {
   }
 
   carregarDados() {
-    this.compsalService.getUsuariosMasculino().subscribe(
+    this.idTime = this.activatedRoute.snapshot.paramMap.get('id');
+    this.compsalService.getUsuariosMasculinoId(this.idTime).subscribe(
       data => {
         const respon = (data as any);
         const obj_retor = respon;// = JSON.parse(respon._body);
