@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CompsalService } from 'src/app/compsal.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastrar',
@@ -33,7 +34,10 @@ export class CadastrarPage implements OnInit {
   massagistaB: any;
   
 
-  constructor(private activatedRoute: ActivatedRoute, private compsalService: CompsalService) { }
+  constructor( 
+    private navController: NavController,
+    private activatedRoute: ActivatedRoute, 
+    private compsalService: CompsalService) { }
 
   ngOnInit() {
     this.pegarJogo();
@@ -59,7 +63,7 @@ export class CadastrarPage implements OnInit {
       this.compsalService.detalharTimeNomeM(this.jogo.timeB).subscribe((result: any) => { this.timeB = result; 
         console.log(this.timeB);
         this.compsalService.detalharUsuario(this.timeB.goleiro).subscribe((result: any) => { this.goleiroB = result; });
-        this.compsalService.detalharUsuario(this.timeA.fixo).subscribe((result: any) => { this.fixoB = result; });
+        this.compsalService.detalharUsuario(this.timeB.fixo).subscribe((result: any) => { this.fixoB = result; });
         this.compsalService.detalharUsuario(this.timeB.alaDireita).subscribe((result: any) => { this.alaDireitaB = result; });
         this.compsalService.detalharUsuario(this.timeB.alaEsquerda).subscribe((result: any) => { this.alaEsquerdaB = result; });
         this.compsalService.detalharUsuario(this.timeB.pivo).subscribe((result: any) => { this.pivoB = result; });
@@ -74,5 +78,8 @@ export class CadastrarPage implements OnInit {
       this.compsalService.detalharUsuario(this.jogo.anotador).subscribe((result: any) => { this.anotador = result; });
     });
   }
-
+  refreshPagee(){
+    console.log("refreshPagee(){");
+    this.navController.navigateForward(['/jogos']);
+  }
 }

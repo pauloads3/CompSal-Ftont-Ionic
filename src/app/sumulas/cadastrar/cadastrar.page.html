@@ -9,131 +9,333 @@
 </ion-header>
 
 <ion-content color="light">
+  
   <ion-item>
-    <ion-label>ID do Jogo: {{jogo.id}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>{{jogo.timeA}}</ion-label>
-    </ion-item>
-    <ion-input type="number" maxLength="4" text-center></ion-input>
-    <ion-label> X </ion-label>
-    <ion-input type="number" maxLength="4" text-center></ion-input>
-    <ion-item>
-      <ion-label>{{jogo.timeB}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-label>Time {{jogo.timeA}}</ion-label>
-  </ion-item>
- 
-    <ion-item>
-      <ion-label slot="start">Goleiro: {{goleiro.nome + ' ( ' + goleiro.cpf + ' / ' + goleiro.id +' )'}}</ion-label>
-      <ion-input type="number" maxLength="4" slot="end"></ion-input>
-      <ion-button (click)="alterarTime(time.id)" slot="end" shape="round" fill="outline" color="warning">Alterar
-      </ion-button>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="auto" style="font-size: 37px;">
+            <div>
+              {{jogo.timeA + '   '+ '2' + '  X  ' + '1' + '   '+ jogo.timeB}}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
 
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div>
+            {{goleiro.id + ' - ' + goleiro.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>           
+            <ion-icon name="square" color="warning" (click)="refreshPagee()"></ion-icon>
+            {{fixo.id}}
+            <ion-icon name="square" color="danger"></ion-icon>
+            {{goleiro.id}}
+            <ion-icon name="football" color="medium"></ion-icon>
+            {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{goleiroB.id + ' - ' + goleiroB.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div>
+            {{fixo.id + ' - ' + fixo.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
 
- 
-  <ion-item>
-    <ion-item>
-      <ion-label>Fixo: {{fixo.nome + ' ( ' + fixo.cpf + ' / ' + fixo.id +' )'}}</ion-label>
-    </ion-item>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{fixoB.id + ' - ' + fixoB.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixoB.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-item>
-      <ion-label>Ala Direita: {{alaDireita.nome + ' ( ' + alaDireita.cpf + ' / ' + alaDireita.id +' )'}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div>
+            {{alaDireita.id + ' - ' + alaDireita.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{alaDireitaB.id + ' - ' + alaDireitaB.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-item>
-      <ion-label>Ala Esquerda: {{alaEsquerda.nome + ' ( ' + alaEsquerda.cpf + ' / ' + alaEsquerda.id +' )'}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div>
+            {{alaEsquerda.id + ' - ' + alaEsquerda.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{alaEsquerdaB.id + ' - ' + alaEsquerdaB.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-item>
-      <ion-label>Pivo: {{pivo.nome + ' ( ' + pivo.cpf + ' / ' + pivo.id +' )'}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div>
+            {{pivo.id + ' - ' + pivo.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{pivoB.id + ' - ' + pivoB.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+              <ion-icon name="square" color="warning"></ion-icon>
+              {{fixo.id}}
+              <ion-icon name="square" color="danger"></ion-icon>
+              {{goleiro.id}}
+              <ion-icon name="football" color="medium"></ion-icon>
+              {{alaEsquerda.id}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-item>
-      <ion-label>Treinador: {{treinador.nome + ' ( ' + treinador.cpf + ' / ' + treinador.id +' )'}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="2">
+          <div>
+            Comissão Técnica
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-item>
-      <ion-label>Massagista: {{massagista.nome + ' ( ' + massagista.cpf + ' / ' + massagista.id +' )'}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5">
+          <div>
+            Treinador: {{treinador.id + ' - ' + treinador.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div>
+            Treinador: {{treinadorB.id + ' - ' + treinadorB.nome}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5">
+          <div>
+            Massagista: {{massagista.id + ' - ' + massagista.nome}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div>
+            Massagista: {{massagistaB.id + ' - ' + massagistaB.nome}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
 
   <ion-item>
-    <ion-label>Time {{jogo.timeB}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Goleiro: {{goleiroB.nome + ' ( ' + goleiroB.cpf + ' / ' + goleiroB.id +' )'}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Fixo: {{fixoB.nome + ' ( ' + fixoB.cpf + ' / ' + fixoB.id +' )'}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Ala Direita: {{alaDireitaB.nome + ' ( ' + alaDireitaB.cpf + ' / ' + alaDireitaB.id +' )'}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Ala Esquerda: {{alaEsquerdaB.nome + ' ( ' + alaEsquerdaB.cpf + ' / ' + alaEsquerdaB.id +' )'}}
-      </ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Pivo: {{pivoB.nome + ' ( ' + pivoB.cpf + ' / ' + pivoB.id +' )'}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Treinador: {{treinadorB.nome + ' ( ' + treinadorB.cpf + ' / ' + treinadorB.id +' )'}}</ion-label>
-    </ion-item>
-  </ion-item>
-  <ion-item>
-    <ion-item>
-      <ion-label>Massagista: {{massagistaB.nome + ' ( ' + massagistaB.cpf + ' / ' + massagistaB.id +' )'}}</ion-label>
-    </ion-item>
   </ion-item>
 
-  <ion-item *ngIf="jogo.genero == 'F'">
-    <ion-label>Gênero: Feminino</ion-label>
-  </ion-item>
-  <ion-item *ngIf="jogo.genero == 'M'">
-    <ion-label>Gênero: Masculino</ion-label>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <div>
+            Árbitro Principal:
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div>
+            {{arbitroPrincipal.id + ' - ' + arbitroPrincipal.nome}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-label>Data: {{jogo.dataJogo}}</ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <div>
+            Árbitro Auxiliar:
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div>
+            {{arbitroAuxiliar.id + ' - ' + arbitroAuxiliar.nome}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-label>Horário: {{jogo.horario}}</ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <div>
+            Anotador:
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div>
+            {{anotador.id + ' - ' + anotador.nome}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
   <ion-item>
-    <ion-label>Local: {{jogo.localJogo}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Árbitro Principal:
-      {{arbitroPrincipal.nome + ' ( ' + arbitroPrincipal.cpf + ' / ' + arbitroPrincipal.id +' )'}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Árbitro Auxiliar:
-      {{arbitroAuxiliar.nome + ' ( ' + arbitroAuxiliar.cpf + ' / ' + arbitroAuxiliar.id +' )'}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Anotador: {{anotador.nome + ' ( ' + anotador.cpf + ' / ' + anotador.id +' )'}}</ion-label>
-  </ion-item>
-
+      <ion-label>ID do Jogo: {{jogo.id}}</ion-label>
+      <ion-label *ngIf="jogo.genero == 'F'">Gênero: Feminino</ion-label>
+      <ion-label *ngIf="jogo.genero == 'M'">Gênero: Masculino</ion-label>
+      <ion-label>Data: {{jogo.dataJogo}}</ion-label>
+      <ion-label>Horário: {{jogo.horario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Local: {{jogo.localJogo}}</ion-label>
+    </ion-item> 
   <ion-item>
     <ion-label>Anotações</ion-label>
     <ion-textarea rows="4" cols="20"></ion-textarea>
