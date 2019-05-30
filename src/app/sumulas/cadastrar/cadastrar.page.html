@@ -15,7 +15,7 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size="auto" style="font-size: 37px;">
             <div>
-              {{jogo.timeA + '   '+ lista_golsTimeA.length + '  X  ' + '1' + '   '+ jogo.timeB}}
+              {{jogo.timeA + '   '+ qdt_golsTimeA + '  X  ' + qdt_golsTimeB + '   '+ jogo.timeB}}
             </div>
           </ion-col>
         </ion-row>
@@ -33,11 +33,11 @@
         <ion-col size="2">
           <div>           
             <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_caTimeAGoleiro}}
             <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_cvTimeAGoleiro}}
             <ion-icon name="football" color="medium" (click)="eventos('Gol', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_golsTimeAGoleiro}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -52,11 +52,11 @@
         <ion-col size="2">
           <div>
               <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_caTimeBGoleiro}}
             <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_cvTimeBGoleiro}}
             <ion-icon name="football" color="medium" (click)="eventos('Gol', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
-            {{lista_golsGoleiro.length}}
+            {{qdt_golsTimeBGoleiro}}
           </div>
         </ion-col>
       </ion-row>
@@ -72,12 +72,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', fixo.id, fixo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_caTimeAfixo}}
+            <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', fixo.id, fixo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_cvTimeAfixo}}
+            <ion-icon name="football" color="medium" (click)="eventos('Gol', fixo.id, fixo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_golsTimeAfixo}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -92,12 +92,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixoB.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', fixoB.id, fixoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_caTimeBfixo}}
+              <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', fixoB.id, fixoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_cvTimeBfixo}}
+              <ion-icon name="football" color="medium" (click)="eventos('Gol', fixoB.id, fixoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_golsTimeBfixo}}
           </div>
         </ion-col>
       </ion-row>
@@ -113,12 +113,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', alaDireita.id, alaDireita.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_caTimeAalaDireita}}
+            <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', alaDireita.id, alaDireita.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_cvTimeAalaDireita}}
+            <ion-icon name="football" color="medium" (click)="eventos('Gol', alaDireita.id, alaDireita.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_golsTimeAalaDireita}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -132,12 +132,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', alaDireitaB.id, alaDireitaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_caTimeBalaDireita}}
+              <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', alaDireitaB.id, alaDireitaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_cvTimeBalaDireita}}
+              <ion-icon name="football" color="medium" (click)="eventos('Gol', alaDireitaB.id, alaDireitaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_golsTimeBalaDireita}}
           </div>
         </ion-col>
       </ion-row>
@@ -153,12 +153,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', alaEsquerda.id, alaEsquerda.nome, jogo.timeA, jogo.id )"></ion-icon>
+              {{qdt_caTimeAalaEsquerda}}
+              <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', alaEsquerda.id, alaEsquerda.nome, jogo.timeA, jogo.id )"></ion-icon>
+              {{qdt_cvTimeAalaEsquerda}}
+              <ion-icon name="football" color="medium" (click)="eventos('Gol', alaEsquerda.id, alaEsquerda.nome, jogo.timeA, jogo.id )"></ion-icon>
+              {{qdt_golsTimeAalaEsquerda}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -172,12 +172,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', alaEsquerdaB.id, alaEsquerdaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_caTimeBalaEsquerda}}
+              <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', alaEsquerdaB.id, alaEsquerdaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_cvTimeBalaEsquerda}}
+              <ion-icon name="football" color="medium" (click)="eventos('Gol', alaEsquerdaB.id, alaEsquerdaB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_golsTimeBalaEsquerda}}
           </div>
         </ion-col>
       </ion-row>
@@ -193,12 +193,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+            <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', pivo.id, pivo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_caTimeApivo}}
+            <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', pivo.id, pivo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_cvTimeApivo}}
+            <ion-icon name="football" color="medium" (click)="eventos('Gol', pivo.id, pivo.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{qdt_golsTimeApivo}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -212,12 +212,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', pivoB.id, pivoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_caTimeBpivo}}
+              <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', pivoB.id, pivoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_cvTimeBpivo}}
+              <ion-icon name="football" color="medium" (click)="eventos('Gol', pivoB.id, pivoB.nome, jogo.timeB, jogo.id )"></ion-icon>
+              {{qdt_golsTimeBpivo}}
           </div>
         </ion-col>
       </ion-row>

@@ -51,9 +51,17 @@ export class CompsalService {
   getTimesFeminino() {
     return this.http.get(this.URL + 'times/findAllF');
   }
-
-  getGolsPorTimeAndJogo() {
-    return this.http.get(this.URL + 'eventos/findByGolsPorTimeAndJogo');
+  getGolsPorTimeAndJogo(valor, time) {      
+    return this.http.get(this.URL + 'eventos/findAllGols/' + valor + '/' + time);
+  }
+  getGolsPorTimeAndJogoAndJogador(valor, time, jogador) {      
+    return this.http.get(this.URL + 'eventos/findAllGols/' + valor + '/' + time + '/' + jogador);
+  }
+  getCartaoAmareloPorTimeAndJogoAndJogador(valor, time, jogador) {      
+    return this.http.get(this.URL + 'eventos/findAllCA/' + valor + '/' + time + '/' + jogador);
+  }
+  getCartaoVermelhoPorTimeAndJogoAndJogador(valor, time, jogador) {      
+    return this.http.get(this.URL + 'eventos/findAllCV/' + valor + '/' + time + '/' + jogador);
   }
 
   createArbitro(descricao: string) {
