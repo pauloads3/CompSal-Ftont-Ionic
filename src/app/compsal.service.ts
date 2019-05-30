@@ -433,7 +433,7 @@ export class CompsalService {
               this.Alerta(error.error.text);
             }
             if (error.error.text == "OK") {
-              this.Alerta("Usuário excluído com sucesso!!!");
+              this.Alerta("Time excluído com sucesso!!!");
             }
           })
     });
