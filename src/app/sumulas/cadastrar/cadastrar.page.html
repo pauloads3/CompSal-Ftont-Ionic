@@ -15,7 +15,7 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size="auto" style="font-size: 37px;">
             <div>
-              {{jogo.timeA + '   '+ '2' + '  X  ' + '1' + '   '+ jogo.timeB}}
+              {{jogo.timeA + '   '+ lista_golsTimeA.length + '  X  ' + '1' + '   '+ jogo.timeB}}
             </div>
           </ion-col>
         </ion-row>
@@ -32,12 +32,12 @@
         </ion-col>
         <ion-col size="2">
           <div>           
-            <ion-icon name="square" color="warning" (click)="refreshPagee()"></ion-icon>
-            {{fixo.id}}
-            <ion-icon name="square" color="danger"></ion-icon>
-            {{goleiro.id}}
-            <ion-icon name="football" color="medium"></ion-icon>
-            {{alaEsquerda.id}}
+            <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
+            <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
+            <ion-icon name="football" color="medium" (click)="eventos('Gol', goleiro.id, goleiro.nome, jogo.timeA, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
           </div>
         </ion-col>
         <ion-col size="2">
@@ -51,12 +51,12 @@
         </ion-col>
         <ion-col size="2">
           <div>
-              <ion-icon name="square" color="warning"></ion-icon>
-              {{fixo.id}}
-              <ion-icon name="square" color="danger"></ion-icon>
-              {{goleiro.id}}
-              <ion-icon name="football" color="medium"></ion-icon>
-              {{alaEsquerda.id}}
+              <ion-icon name="square" color="warning" (click)="eventos('Cartão Amarelo', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
+            <ion-icon name="square" color="danger" (click)="eventos('Cartão Vermelho', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
+            <ion-icon name="football" color="medium" (click)="eventos('Gol', goleiroB.id, goleiroB.nome, jogo.timeB, jogo.id )"></ion-icon>
+            {{lista_golsGoleiro.length}}
           </div>
         </ion-col>
       </ion-row>

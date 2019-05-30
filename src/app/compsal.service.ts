@@ -52,6 +52,10 @@ export class CompsalService {
     return this.http.get(this.URL + 'times/findAllF');
   }
 
+  getGolsPorTimeAndJogo() {
+    return this.http.get(this.URL + 'eventos/findByGolsPorTimeAndJogo');
+  }
+
   createArbitro(descricao: string) {
     return new Promise((resolve, reject) => {
       var data = {
@@ -198,6 +202,32 @@ export class CompsalService {
     });
 
   }
+
+  cadastarEventos(eventos: any) {
+    console.log(eventos);
+    return new Promise((resolve, reject) => {
+      var data = eventos;
+      let mensagens = "";
+      this.http.post(this.URL + 'eventos/createEventos', data)
+        .subscribe((result: any) => {
+          console.log(result);
+          if (result.id != null) {
+            this.Alerta(result.tipo + " registrado com sucesso! <br><br>" + "Id: " + result.id);
+           // this.router.navigate(['/jogos']);
+          }
+          resolve(result.data);
+        },
+          (error) => {
+            if (error.name == "HttpErrorResponse" && error.statusText != "OK") {
+              this.Alerta("Verifique sua conexão! <br><br>" + error.statusText + "<br>" + error.url);
+            } else {
+              this.Alerta(error.message);
+            }
+          })
+    });
+
+  }
+
 
   alterarUsuario(usuario: any) {
     console.log(usuario);
